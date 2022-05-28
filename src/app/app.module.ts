@@ -1,16 +1,36 @@
-import { NgModule } from '@angular/core';
+import {ErrorHandler, NgModule} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { AppComponent } from './app.component';
+import { AppRootComponent } from './app-root.component';
+import {AppRoutingModule} from "./app.routing.module";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
+import {SharedModule} from "@app/shared/shared.module";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {CoreErrorHandler} from "./core/core-error-handler";
+import {AuthInterceptor} from "@app/interceptors";
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppRootComponent
   ],
   imports: [
-    BrowserModule
+    AppRoutingModule,
+    HttpClientModule,
+    SharedModule,
+    BrowserModule,
+    BrowserAnimationsModule,
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    {
+      provide: ErrorHandler,
+      useClass: CoreErrorHandler
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    },
+  ],
+  bootstrap: [AppRootComponent]
 })
 export class AppModule { }

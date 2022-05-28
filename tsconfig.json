@@ -4,29 +4,31 @@
   "compilerOptions": {
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
-    "forceConsistentCasingInFileNames": true,
-    "strict": true,
-    "noImplicitOverride": true,
-    "noPropertyAccessFromIndexSignature": true,
-    "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true,
     "sourceMap": true,
     "declaration": false,
     "downlevelIteration": true,
     "experimentalDecorators": true,
     "moduleResolution": "node",
     "importHelpers": true,
-    "target": "es2017",
+    "target": "es5",
     "module": "es2020",
     "lib": [
-      "es2020",
+      "es2018",
       "dom"
-    ]
-  },
-  "angularCompilerOptions": {
-    "enableI18nLegacyMessageIdFormat": false,
-    "strictInjectionParameters": true,
-    "strictInputAccessModifiers": true,
-    "strictTemplates": true
+    ],
+
+    "paths": {
+      "@app/environment/*": ["src/environments/*"],
+      "@app/models": ["src/app/shared/models/index"],
+      "@app/services": ["src/app/core/services/index"],
+      "@app/guards": ["src/app/core/guards/index"],
+      "@app/testing/*": ["src/testing/*"],
+      "@app/decorators": ["src/app/shared/decorators/index"],
+      "@app/constants": ["src/app/core/constants/index"],
+      "@app/interceptors": ["src/app/core/interceptors/index"],
+      "@app/validators": ["src/app/core/validators/index"],
+      "@app/stores": ["src/app/core/stores/index"],
+      "@app/shared/*": ["src/app/shared/*"],
+    }
   }
 }
