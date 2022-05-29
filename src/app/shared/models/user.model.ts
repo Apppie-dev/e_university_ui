@@ -3,24 +3,21 @@ export class UserModel {
   id: number;
   login: string;
 
-  firstName: string;
-  lastName: string;
+  last_visit: string;
+  password: string;
   email: string;
 
-  group: null | UserGroupModel;
+  role_id: null | UserRole;
+  is_active: boolean;
 
   constructor(init?: any) {
     Object.assign(this, init);
   }
 }
 
-export class UserGroupModel {
-
-  id: number;
-  name: string;
-
-  constructor(init?: any) {
-    Object.assign(this, init);
-  }
+export enum UserRole {
+  Student = 0,
+  Admin = 1,
+  Superadmin = 2
 }
 

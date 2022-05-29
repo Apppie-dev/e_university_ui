@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { UserGroupModel } from '@app/models';
+import {UserRole} from '@app/models';
 
 
 @Injectable({
@@ -7,8 +7,9 @@ import { UserGroupModel } from '@app/models';
 })
 export class RolesService {
 
-  static checkRole(userGroup: UserGroupModel | null, userRoles: number[] = []): boolean {
-    return userGroup && userGroup.hasOwnProperty('id') ? userRoles.indexOf(userGroup.id) !== -1 : false;
+  static checkRole(userGroup: UserRole | null, userRoles: number[] = []): boolean {
+    // return userGroup && userGroup.hasOwnProperty('id') ? userRoles.indexOf(userGroup.id) !== -1 : false;
+    return true;
   }
 
 }
