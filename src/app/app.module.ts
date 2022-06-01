@@ -9,9 +9,10 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {CoreErrorHandler} from "./core/core-error-handler";
 import {AuthInterceptor} from "@app/interceptors";
 
+
 @NgModule({
   declarations: [
-    AppRootComponent
+    AppRootComponent,
   ],
   imports: [
     AppRoutingModule,

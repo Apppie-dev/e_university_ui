@@ -20,5 +20,4 @@ export class PageLoginComponent implements OnInit {
       title: this.pageTitle
     }));
   }
-
 }
