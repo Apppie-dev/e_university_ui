@@ -1,10 +1,108 @@
-<div>
-  <h1>Авторизація</h1>
-  <label>Логін</label><br><br>
-  <input type="text" placeholder="Ваше ім'я"><br><br>
-  <label>Пароль</label><br><br>
-  <input type = "text" placeholder = "Ваш пароль"><br><br>
-  <button>увійти</button><br>
-  <p>Ще немає аккаунту?</p>
-  <button>Зареєструватися</button><br><br><br>
-</div>
+<section class="is-fullheight page-login-wrapper">
+  <div class="wrap is-flex">
+
+    <div class="content-side">
+      <div class="content-side-top">
+        <div class="content-side-top-left">
+          Electronic University.
+        </div>
+        <div class="content-side-top-right">
+          <a href="#">
+            <img src="/assets/img/logo.png" alt="Логотип">
+          </a>
+        </div>
+      </div>
+
+      <div class="content-side-bottom">
+        <p>
+          Сервіс допоможе Вам отримати послуги, що надаються університетом, у віддаленій формі та без зайвої бюрократії,
+          зберігаючи ваш час та посмішку.
+        </p>
+        <p>
+          Наразі автоматизовані наступні послуги:
+        </p>
+        <ul>
+          <li>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M0.833336 10C0.833336 4.9374 4.93739 0.833344 10 0.833344C15.0626 0.833344 19.1667 4.9374 19.1667 10C19.1667 15.0626 15.0626 19.1667 10 19.1667C4.93739 19.1667 0.833336 15.0626 0.833336 10Z" fill="#08AD36"/>
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M14.4256 6.70245C14.751 7.02789 14.751 7.55553 14.4256 7.88096L9.25297 13.2976C8.92753 13.6231 8.39989 13.6231 8.07445 13.2976L5.57445 10.7976C5.24902 10.4722 5.24902 9.94456 5.57445 9.61912C5.89989 9.29368 6.42753 9.29368 6.75296 9.61912L8.66371 11.5299L13.247 6.70245C13.5725 6.37702 14.1001 6.37702 14.4256 6.70245Z" fill="white"/>
+            </svg>
+            подання заяви на поселення до гуртожитку
+          </li>
+          <li>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M0.833336 10C0.833336 4.9374 4.93739 0.833344 10 0.833344C15.0626 0.833344 19.1667 4.9374 19.1667 10C19.1667 15.0626 15.0626 19.1667 10 19.1667C4.93739 19.1667 0.833336 15.0626 0.833336 10Z" fill="#08AD36"/>
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M14.4256 6.70245C14.751 7.02789 14.751 7.55553 14.4256 7.88096L9.25297 13.2976C8.92753 13.6231 8.39989 13.6231 8.07445 13.2976L5.57445 10.7976C5.24902 10.4722 5.24902 9.94456 5.57445 9.61912C5.89989 9.29368 6.42753 9.29368 6.75296 9.61912L8.66371 11.5299L13.247 6.70245C13.5725 6.37702 14.1001 6.37702 14.4256 6.70245Z" fill="white"/>
+            </svg>
+            отримання результату розгляду поданої заяви <br> на поселення до гуртожитку з детальною інформацією
+          </li>
+        </ul>
+
+      </div>
+      <div class="corner">
+        <svg width="34" height="33" viewBox="0 0 34 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M21 0H33.5V33H0V20.5H21V0Z" fill="white"/>
+        </svg>
+      </div>
+    </div>
+
+    <div class="form-side">
+      <form class="theme-form" [formGroup]="formLogin" (ngSubmit)="actionSave()" autocomplete="off" novalidate>
+
+        <div class="form-title">
+          Авторизація
+        </div>
+
+        <div class="form-subtitle">
+          Будь ласка, введіть свою інформацію в поля нижче, щоб увійти до сервісу
+        </div>
+
+        <div class="field-wrapper">
+          <div class="field">
+            <label for="login" class="label">Логін</label>
+            <div class="control">
+              <input type="email" placeholder="e.g. user@gmail.com" class="input" autocomplete="off"
+                     name="login" id="login" formControlName="login"
+                     [ngClass]="{
+                          'is-danger': formLogin.touched && formLogin.controls.login.touched && formLogin.controls.login.invalid,
+                          'is-success': formLogin.touched && formLogin.controls.login.touched && !formLogin.controls.login.invalid
+                       }">
+            </div>
+            <form-field-errors [formField]="formLogin.controls.login"></form-field-errors>
+          </div>
+
+          <div class="field">
+            <label for="password" class="label">Пароль</label>
+            <div class="control">
+              <input type="password" appPasswordInputDirective placeholder="Введіть ваш пароль" class="input" autocomplete="off"
+                     name="password" id="password" formControlName="password"
+                     [ngClass]="{
+                          'is-danger': formLogin.touched && formLogin.controls.password.touched && formLogin.controls.password.invalid,
+                          'is-success': formLogin.touched && formLogin.controls.password.touched && !formLogin.controls.password.invalid
+                       }">
+            </div>
+            <form-field-errors [formField]="formLogin.controls.password"></form-field-errors>
+
+          </div>
+
+        </div>
+
+        <div class="control">
+          <button class="button submit-button"
+                  [disabled]="(formLogin.touched && formLogin.invalid) || !formLogin.touched"
+                  [ngClass]="{'is-loading': formLoginLoading}">Увійти
+          </button>
+        </div>
+
+        <div class="new-account-sign">
+          <span>
+            Ще не маєте акаунту?
+          </span>
+          <a  routerLink="/login/registration">
+            Зареєструватися
+          </a>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>

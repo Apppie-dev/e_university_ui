@@ -4,6 +4,7 @@ import {LocalStorageService} from "../common/local-storage.service";
 import {SETTINGS_APP} from "@app/constants";
 import {BehaviorSubject, Observable, Subject} from "rxjs";
 import {UserModel} from "@app/models";
+import {environment} from "@app/environment/environment";
 
 
 @Injectable({
@@ -28,6 +29,12 @@ export class AuthenticationService {
   private authUserDataSubject: BehaviorSubject<UserModel | null>;
   private unsubscribeRequest$ = new Subject();
 
-  // private backendUrl = `${environment.backendUrl}`;
+  private backendUrl = `${environment.backendUrl}`;
 
+  login(username: string, password: string, rememberMe: boolean): any {
+    const url = `${this.backendUrl}authenticate`;
+    const body = {username, password};
+
+    console.log(body);
+  }
 }

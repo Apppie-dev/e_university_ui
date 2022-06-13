@@ -1,4 +1,5 @@
-import {Component} from '@angular/core';
+import {Component, Input} from '@angular/core';
+import {AbstractControl} from "@angular/forms";
 
 
 @Component({
@@ -7,4 +8,6 @@ import {Component} from '@angular/core';
   styleUrls: ['./form-field-errors.component.scss']
 })
 export class FormFieldErrorsComponent{
+  @Input() formField: AbstractControl;
+
 }

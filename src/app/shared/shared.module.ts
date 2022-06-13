@@ -10,6 +10,7 @@ import {
   FormFieldErrorsComponent,
 } from './components';
 import { AppClickOutsideDirective, AppRolesDirective} from './directive';
+import {AppPasswordInputDirective} from "@app/shared/directive/app-password-input.directive";
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { AppClickOutsideDirective, AppRolesDirective} from './directive';
   declarations: [
     AppClickOutsideDirective,
     AppRolesDirective,
+    AppPasswordInputDirective,
 
     CoreSidebarComponent,
     CorePaginationComponent,
@@ -35,6 +37,7 @@ import { AppClickOutsideDirective, AppRolesDirective} from './directive';
 
     AppClickOutsideDirective,
     AppRolesDirective,
+    AppPasswordInputDirective,
 
     CoreSidebarComponent,
     CorePaginationComponent,

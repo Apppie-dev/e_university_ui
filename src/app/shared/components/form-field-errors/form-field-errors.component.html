@@ -1,0 +1,11 @@
+<ng-container *ngIf="formField && formField.touched && formField.errors">
+
+  <ng-container *ngIf="formField.errors?.required">
+    <p class="help is-danger">Це поле обов'язково для заповнення</p>
+  </ng-container>
+
+  <ng-container *ngIf="formField.errors?.empty">
+    <p class="help is-danger">Поле не повинно бути порожнім</p>
+  </ng-container>
+
+</ng-container>

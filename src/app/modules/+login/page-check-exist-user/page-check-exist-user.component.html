@@ -1,9 +1,122 @@
-<div>
-  <h1>Перевірка наявности
-    даних студента в реєстрі</h1>
-  <label>Прізвіще та ім'я</label><br><br>
-  <input type="text" placeholder="Ваше прізвище та ім'я"><br><br>
-  <label>Номер телефону</label><br><br>
-  <input type = "text" placeholder = "(066)-66-46-1106"><br><br>
-  <button>Перевірити наявність</button><br><br>
-</div>
+<section class="is-fullheight page-login-wrapper">
+  <div class="wrap is-flex">
+
+    <div class="content-side">
+      <div class="content-side-top">
+        <div class="content-side-top-left">
+          Electronic University.
+        </div>
+        <div class="content-side-top-right">
+          <a href="#">
+            <img src="/assets/img/logo.png" alt="Логотип">
+          </a>
+        </div>
+      </div>
+
+      <div class="content-side-bottom">
+        <p>
+          Сервіс допоможе Вам отримати послуги, що надаються університетом, у віддаленій формі та без зайвої бюрократії,
+          зберігаючи ваш час та посмішку.
+        </p>
+        <p>
+          Наразі автоматизовані наступні послуги:
+        </p>
+        <ul>
+          <li>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" clip-rule="evenodd"
+                    d="M0.833336 10C0.833336 4.9374 4.93739 0.833344 10 0.833344C15.0626 0.833344 19.1667 4.9374 19.1667 10C19.1667 15.0626 15.0626 19.1667 10 19.1667C4.93739 19.1667 0.833336 15.0626 0.833336 10Z"
+                    fill="#08AD36"/>
+              <path fill-rule="evenodd" clip-rule="evenodd"
+                    d="M14.4256 6.70245C14.751 7.02789 14.751 7.55553 14.4256 7.88096L9.25297 13.2976C8.92753 13.6231 8.39989 13.6231 8.07445 13.2976L5.57445 10.7976C5.24902 10.4722 5.24902 9.94456 5.57445 9.61912C5.89989 9.29368 6.42753 9.29368 6.75296 9.61912L8.66371 11.5299L13.247 6.70245C13.5725 6.37702 14.1001 6.37702 14.4256 6.70245Z"
+                    fill="white"/>
+            </svg>
+            подання заяви на поселення до гуртожитку
+          </li>
+          <li>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" clip-rule="evenodd"
+                    d="M0.833336 10C0.833336 4.9374 4.93739 0.833344 10 0.833344C15.0626 0.833344 19.1667 4.9374 19.1667 10C19.1667 15.0626 15.0626 19.1667 10 19.1667C4.93739 19.1667 0.833336 15.0626 0.833336 10Z"
+                    fill="#08AD36"/>
+              <path fill-rule="evenodd" clip-rule="evenodd"
+                    d="M14.4256 6.70245C14.751 7.02789 14.751 7.55553 14.4256 7.88096L9.25297 13.2976C8.92753 13.6231 8.39989 13.6231 8.07445 13.2976L5.57445 10.7976C5.24902 10.4722 5.24902 9.94456 5.57445 9.61912C5.89989 9.29368 6.42753 9.29368 6.75296 9.61912L8.66371 11.5299L13.247 6.70245C13.5725 6.37702 14.1001 6.37702 14.4256 6.70245Z"
+                    fill="white"/>
+            </svg>
+            отримання результату розгляду поданої заяви <br> на поселення до гуртожитку з детальною інформацією
+          </li>
+        </ul>
+
+      </div>
+      <div class="corner">
+        <svg width="34" height="33" viewBox="0 0 34 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M21 0H33.5V33H0V20.5H21V0Z" fill="white"/>
+        </svg>
+      </div>
+    </div>
+
+    <div class="form-side">
+      <form class="theme-form" [formGroup]="formCheckUser" (ngSubmit)="actionSave()" autocomplete="off" novalidate>
+
+        <div class="form-title">
+          Перевірка
+        </div>
+
+        <div class="form-subtitle">
+          Перевірка наявності даних студента в реєстрі
+        </div>
+
+        <div class="field-wrapper">
+          <div class="field">
+            <label for="username" class="label">Прізвище та ім’я</label>
+            <div class="control">
+              <input type="text" placeholder="Прізвище ім'я" class="input" autocomplete="off"
+                     name="password" id="username" formControlName="username"
+                     [ngClass]="{
+                          'is-danger': formCheckUser.touched && formCheckUser.controls.username.touched && formCheckUser.controls.username.invalid,
+                          'is-success': formCheckUser.touched && formCheckUser.controls.username.touched && !formCheckUser.controls.username.invalid
+                       }">
+            </div>
+            <form-field-errors [formField]="formCheckUser.controls.username"></form-field-errors>
+
+          </div>
+          <div class="field phone-field">
+            <label for="phone" class="label">Номер телефону</label>
+            <div class="control has-icons-left">
+              <input type="number" placeholder="99 345 21 12" class="input" autocomplete="off"
+                     name="phone" id="phone" formControlName="phone"
+                     [ngClass]="{
+                          'is-danger': formCheckUser.touched && formCheckUser.controls.phone.touched && formCheckUser.controls.phone.invalid,
+                          'is-success': formCheckUser.touched && formCheckUser.controls.phone.touched && !formCheckUser.controls.phone.invalid
+                       }">
+
+
+              <span class="icon is-left phone-input-icon">
+                        <svg viewBox="0 0 25 18" fill="none" xmlns="http://www.w3.org/2000/svg"
+                             xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <rect x="0.5" width="24" height="18" fill="url(#pattern0)"/>
+                            <defs>
+                            <pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1">
+                            <use xlink:href="#image0_1_403" transform="translate(-0.0625) scale(0.00125 0.00166667)"/>
+                            </pattern>
+                            <image id="image0_1_403" width="900" height="600"
+                                   xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA4QAAAJYCAIAAAC1p7+MAAALS0lEQVR4nO3YQQ2AMAAEQYoJEnxWZwVUCF9k7KMzCu65ufHOdQEAQOGuBwAAcC4xCgBARowCAJARowAAZMQoAAAZMQoAQEaMAgCQEaMAAGTEKAAAGTEKAEBGjAIAkBGjAABkxCgAABkxCgBARowCAJARowAAZMQoAAAZMQoAQEaMAgCQEaMAAGTEKAAAGTEKAEBGjAIAkBGjAABkxCgAABkxCgBARowCAJARowAAZMQoAAAZMQoAQEaMAgCQEaMAAGTEKAAAGTEKAEBGjAIAkBGjAABkxCgAABkxCgBARowCAJARowAAZMQoAAAZMQoAQEaMAgCQEaMAAGTEKAAAGTEKAEBGjAIAkBGjAABkxCgAABkxCgBARowCAJARowAAZMQoAAAZMQoAQEaMAgCQEaMAAGTEKAAAGTEKAEBGjAIAkBGjAABkxCgAABkxCgBARowCAJARowAAZMQoAAAZMQoAQEaMAgCQEaMAAGTEKAAAGTEKAEBGjAIAkBGjAABkxCgAABkxCgBARowCAJARowAAZMQoAAAZMQoAQEaMAgCQEaMAAGTEKAAAGTEKAEBGjAIAkBGjAABkxCgAABkxCgBARowCAJARowAAZMQoAAAZMQoAQEaMAgCQEaMAAGTEKAAAGTEKAEBGjAIAkBGjAABkxCgAABkxCgBARowCAJARowAAZMQoAAAZMQoAQEaMAgCQEaMAAGTEKAAAGTEKAEBGjAIAkBGjAABkxCgAABkxCgBARowCAJARowAAZMQoAAAZMQoAQEaMAgCQEaMAAGTEKAAAGTEKAEBGjAIAkBGjAABkxCgAABkxCgBARowCAJARowAAZMQoAAAZMQoAQEaMAgCQEaMAAGTEKAAAGTEKAEBGjAIAkBGjAABkxCgAABkxCgBARowCAJARowAAZMQoAAAZMQoAQEaMAgCQEaMAAGTEKAAAGTEKAEBGjAIAkBGjAABkxCgAABkxCgBARowCAJARowAAZMQoAAAZMQoAQEaMAgCQEaMAAGTEKAAAGTEKAEBGjAIAkBGjAABkxCgAABkxCgBARowCAJARowAAZMQoAAAZMQoAQEaMAgCQEaMAAGTEKAAAGTEKAEBGjAIAkBGjAABkxCgAABkxCgBARowCAJARowAAZMQoAAAZMQoAQEaMAgCQEaMAAGTEKAAAGTEKAEBGjAIAkBGjAABkxCgAABkxCgBARowCAJARowAAZMQoAAAZMQoAQEaMAgCQEaMAAGTEKAAAGTEKAEBGjAIAkBGjAABkxCgAABkxCgBARowCAJARowAAZMQoAAAZMQoAQEaMAgCQEaMAAGTEKAAAGTEKAEBGjAIAkBGjAABkxCgAABkxCgBARowCAJARowAAZMQoAAAZMQoAQEaMAgCQEaMAAGTEKAAAGTEKAEBGjAIAkBGjAABkxCgAABkxCgBARowCAJARowAAZMQoAAAZMQoAQEaMAgCQEaMAAGTEKAAAGTEKAEBGjAIAkBGjAABkxCgAABkxCgBARowCAJARowAAZMQoAAAZMQoAQEaMAgCQEaMAAGTEKAAAGTEKAEBGjAIAkBGjAABkxCgAABkxCgBARowCAJARowAAZMQoAAAZMQoAQEaMAgCQEaMAAGTEKAAAGTEKAEBGjAIAkBGjAABkxCgAABkxCgBARowCAJARowAAZMQoAAAZMQoAQEaMAgCQEaMAAGTEKAAAGTEKAEBGjAIAkBGjAABkxCgAABkxCgBARowCAJARowAAZMQoAAAZMQoAQEaMAgCQEaMAAGTEKAAAGTEKAEBGjAIAkBGjAABkxCgAABkxCgBARowCAJARowAAZMQoAAAZMQoAQEaMAgCQEaMAAGTEKAAAGTEKAEBGjAIAkBGjAABkxCgAABkxCgBARowCAJARowAAZMQoAAAZMQoAQEaMAgCQEaMAAGTEKAAAGTEKAEBGjAIAkBnffuoNAAAcyjMKAEBGjAIAkBGjAABkxCgAABkxCgBARowCAJARowAAZMQoAAAZMQoAQEaMAgCQEaMAAGTEKAAAGTEKAEBGjAIAkBGjAABkxCgAABkxCgBARowCAJARowAAZMQoAAAZMQoAQEaMAgCQEaMAAGTEKAAAGTEKAEBGjAIAkBGjAABkxCgAABkxCgBARowCAJARowAAZMQoAAAZMQoAQEaMAgCQEaMAAGTEKAAAGTEKAEBGjAIAkBGjAABkxCgAABkxCgBARowCAJARowAAZMQoAAAZMQoAQEaMAgCQEaMAAGTEKAAAGTEKAEBGjAIAkBGjAABkxCgAABkxCgBARowCAJARowAAZMQoAAAZMQoAQEaMAgCQEaMAAGTEKAAAGTEKAEBGjAIAkBGjAABkxCgAABkxCgBARowCAJARowAAZMQoAAAZMQoAQEaMAgCQEaMAAGTEKAAAGTEKAEBGjAIAkBGjAABkxCgAABkxCgBARowCAJARowAAZMQoAAAZMQoAQEaMAgCQEaMAAGTEKAAAGTEKAEBGjAIAkBGjAABkxCgAABkxCgBARowCAJARowAAZMQoAAAZMQoAQEaMAgCQEaMAAGTEKAAAGTEKAEBGjAIAkBGjAABkxCgAABkxCgBARowCAJARowAAZMQoAAAZMQoAQEaMAgCQEaMAAGTEKAAAGTEKAEBGjAIAkBGjAABkxCgAABkxCgBARowCAJARowAAZMQoAAAZMQoAQEaMAgCQEaMAAGTEKAAAGTEKAEBGjAIAkBGjAABkxCgAABkxCgBARowCAJARowAAZMQoAAAZMQoAQEaMAgCQEaMAAGTEKAAAGTEKAEBGjAIAkBGjAABkxCgAABkxCgBARowCAJARowAAZMQoAAAZMQoAQEaMAgCQEaMAAGTEKAAAGTEKAEBGjAIAkBGjAABkxCgAABkxCgBARowCAJARowAAZMQoAAAZMQoAQEaMAgCQEaMAAGTEKAAAGTEKAEBGjAIAkBGjAABkxCgAABkxCgBARowCAJARowAAZMQoAAAZMQoAQEaMAgCQEaMAAGTEKAAAGTEKAEBGjAIAkBGjAABkxCgAABkxCgBARowCAJARowAAZMQoAAAZMQoAQEaMAgCQEaMAAGTEKAAAGTEKAEBGjAIAkBGjAABkxCgAABkxCgBARowCAJARowAAZMQoAAAZMQoAQEaMAgCQEaMAAGTEKAAAGTEKAEBGjAIAkBGjAABkxCgAABkxCgBARowCAJARowAAZMQoAAAZMQoAQEaMAgCQEaMAAGTEKAAAGTEKAEBGjAIAkBGjAABkxCgAABkxCgBARowCAJARowAAZMQoAAAZMQoAQEaMAgCQEaMAAGTEKAAAGTEKAEBGjAIAkBGjAABkxCgAABkxCgBARowCAJARowAAZMQoAAAZMQoAQEaMAgCQEaMAAGTEKAAAGTEKAEBGjAIAkBGjAABkxCgAABkxCgBARowCAJARowAAZMQoAAAZMQoAQEaMAgCQEaMAAGTEKAAAGTEKAEBGjAIAkBGjAABkxCgAABkxCgBARowCAJARowAAZMQoAAAZMQoAQEaMAgCQEaMAAGTEKAAAGTEKAEBGjAIAkBGjAABkxCgAABkxCgBARowCAJARowAAZMQoAAAZMQoAQEaMAgCQEaMAAGTEKAAAGTEKAEBGjAIAkBGjAABkxCgAABkxCgBARowCAJARowAAZMQoAAAZMQoAQEaMAgCQEaMAAGTEKAAAGTEKAEBGjAIAkBGjAABkxCgAABkxCgBARowCAJARowAAZMQoAAAZMQoAQEaMAgCQEaMAAGTEKAAAGTEKAEBGjAIAkBGjAABkxCgAABkxCgBARowCAJARowAAZMQoAAAZMQoAQEaMAgCQEaMAAGR+K6AH9kkchnsAAAAASUVORK5CYII="/>
+                            </defs>
+                          </svg>
+                      <span>+380</span>
+                      </span>
+            </div>
+            <form-field-errors [formField]="formCheckUser.controls.phone"></form-field-errors>
+          </div>
+
+        </div>
+
+        <div class="control">
+          <button class="button submit-button"
+                  [disabled]="(formCheckUser.touched && formCheckUser.invalid) || !formCheckUser.touched"
+                  [ngClass]="{'is-loading': formCheckUserLoading}">Перевірити наявність
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>

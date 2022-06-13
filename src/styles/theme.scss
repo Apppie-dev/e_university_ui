@@ -1,0 +1,246 @@
+@import '~src/styles/variables';
+/*
+    100 rem = 1920 px
+    1 px   = 0,052083333 rem
+*/
+html {
+  font-size: 1.0vw;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  min-height: 100%;
+  background: #FFFFFF;
+}
+
+.error-wrapper {
+  text-align: center;
+  margin: 40px 0 0 0;
+}
+
+.button {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+
+  &.disabled {
+    cursor: not-allowed;
+    filter: grayscale(1);
+    opacity: 0.5;
+  }
+
+  &.empty-button {
+    background: transparent !important;
+    border: none;
+    box-sizing: border-box;
+    color: #000000;
+    outline: none;
+    box-shadow: none !important;
+
+    &:not([disabled]):hover {
+      color: #000000;
+      text-decoration: underline;
+    }
+  }
+}
+
+.action-button {
+  font-size: 16px;
+  line-height: 19px;
+  color: #000000;
+  background: transparent;
+  border: 2px solid #000000;
+  box-sizing: border-box;
+  border-radius: 20px;
+  padding: 10px 14px;
+  cursor: pointer;
+  margin: 24px 0 0 0;
+}
+
+.notification {
+  font-size: 14px;
+
+  i {
+    margin: 0 12px 0 0;
+    font-size: 16px;
+  }
+
+  .delete {
+    top: 20px;
+    right: 20px;
+  }
+}
+
+.select:not(.is-multiple):not(.is-loading)::after {
+  border-color: #181819;
+}
+
+.disabled {
+  cursor: not-allowed !important;
+  filter: grayscale(1) !important;
+  opacity: 0.5 !important;
+}
+
+.error {
+  color: $systemRed;
+  font-size: 14px;
+  line-height: 18px;
+}
+
+span.input.disabled {
+  background-color: whitesmoke;
+  border-color: whitesmoke;
+  box-shadow: none;
+  color: #7a7a7a;
+}
+
+
+
+// login pages
+
+.page-login-wrapper {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  .wrap {
+    height: 100%;
+  }
+
+  .content-side {
+    width: 56.93rem;
+    background: url('/assets/img/login-bg.png') no-repeat 0 0 transparent;
+    background-size: cover;
+
+    .content-side-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.66rem 1.66rem 0 3.33rem;
+      .content-side-top-left {
+        font-family: $theme-font-MulishBlack;
+        font-style: normal;
+        font-weight: 900;
+        font-size: 1.25rem;
+        line-height: 1.1458rem;
+        letter-spacing: 0.013rem;
+        color: #F2F2F2;
+
+        opacity: 0.99;
+      }
+    }
+
+    .content-side-bottom {
+      margin: 0 auto;
+      width: 29.218rem;
+      margin-top: 12.604rem;
+      text-align: left;
+      font-family: $theme-font-MulishRegular;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 1.0416em;
+      line-height: 140%;
+      letter-spacing: 0.01302rem;
+      color: #F2F2F2;
+
+      opacity: 0.99;
+
+      p {
+        &:first-of-type {
+          margin-bottom: 1rem;
+        }
+        &:last-of-type {
+          margin-bottom: 0.5rem;
+        }
+      }
+
+      ul {
+        padding: 0;
+        margin: 0;
+
+        li {
+          margin-bottom: 0.625rem;
+
+          svg {
+            position: relative;
+            top: 0.26rem;
+            margin-right: 0.8333rem;
+            width: 1.0417rem;
+            height: 1.0417rem;
+          }
+        }
+      }
+    }
+    .corner {
+      margin: 5.781rem 4.4792rem 0;
+      svg {
+        display: block;
+        margin-left: auto;
+        width: 1.718rem;
+        height: 1.718rem;
+      }
+    }
+  }
+
+  .form-side {
+    padding-top: 14.583rem;
+    width: 43.072916391rem;
+    display: flex;
+    justify-content: center;
+    height: 100%;
+
+    form {
+      width: 22.239rem;
+
+      .form-title {
+        font-family: $theme-font-MulishBlack;
+        font-style: normal;
+        font-weight: 900;
+        font-size: 2.08333332rem;
+        line-height: 110%;
+        color: #42505C;
+      }
+
+      .form-subtitle {
+        margin-top: 0.833rem;
+        margin-bottom: 1.874rem;
+        width: 17.864rem;
+        font-family: $theme-font-MulishRegular;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 0.833rem;
+        line-height: 1.14583rem;
+        letter-spacing: 0.01302rem;
+        color: #42505C;
+        opacity: 0.99;
+      }
+
+      .new-account-sign {
+        font-family: $theme-font-InterRegular;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 0.7812rem;
+        line-height: 150%;
+        text-align: center;
+        letter-spacing: 0.026rem;
+        margin-top: 1.25rem;
+
+        color: #717784;
+
+        a {
+          color: #1565D8;
+          &, &:visited, &:focus {
+            color: #1565D8;
+          }
+        }
+      }
+    }
+  }
+}
