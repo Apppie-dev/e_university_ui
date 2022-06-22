@@ -1,1 +1,24 @@
-<p>page-faculty-create works!</p>
+<div>
+  <h1>Новий фалькутет</h1><br>
+  <div class = "form-side">
+    <form [formGroup]="createFacultyForm" (ngSubmit)="actionSave()">
+      <div>
+        <h2>Назва</h2>
+        <input class="" placeholder="Information technoligies" name="name" formControlName="name">
+      </div>
+      <div>
+        <h2>Скорочена назва</h2>
+        <input class="" value="asdads" placeholder="IT" name = "shortName" formControlName="shortName">
+      </div>
+      <div>
+        <h2>Email гуртожитку</h2>
+        <input class="" placeholder="hostel@gmail.com" name = "hostelEmail" formControlName="hostelEmail">
+      </div>
+      <div>
+        <h2>Email</h2>
+        <input class="" placeholder="max@gmail.com" name = "email" formControlName="email"><br>
+      </div>
+      <button style="margin-top: 15px">Create faculty</button>
+    </form>
+  </div>
+</div>
