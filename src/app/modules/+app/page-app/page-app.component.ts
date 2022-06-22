@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { PageMetaService } from '@app/services';
 import { PageMetaModel } from '@app/shared/models/page-meta.model';
-import {Subject, takeUntil } from 'rxjs';
+import {Subject } from 'rxjs';
+import {takeUntil} from "rxjs/operators";
 
 
 @Component({

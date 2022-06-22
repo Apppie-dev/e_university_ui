@@ -14,5 +14,16 @@ export class AuthInterceptor implements HttpInterceptor {
   }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): any {
+    // add authorization header with basic auth credentials if available
+    const authUserData = this.authenticationService.authUserDataValue;
+
+    if (authUserData) {
+      request = request.clone({
+        setHeaders: {
+        }
+      });
+    }
+
+    return next.handle(request);
   }
 }

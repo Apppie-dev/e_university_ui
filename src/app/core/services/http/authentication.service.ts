@@ -5,6 +5,7 @@ import {SETTINGS_APP} from "@app/constants";
 import {BehaviorSubject, Observable, Subject} from "rxjs";
 import {UserModel} from "@app/models";
 import {environment} from "@app/environment/environment";
+import {map} from "rxjs/operators";
 
 
 @Injectable({
@@ -27,14 +28,29 @@ export class AuthenticationService {
 
   authUserData$: Observable<UserModel | null>;
   private authUserDataSubject: BehaviorSubject<UserModel | null>;
-  private unsubscribeRequest$ = new Subject();
 
   private backendUrl = `${environment.backendUrl}`;
 
-  login(username: string, password: string, rememberMe: boolean): any {
+  login(username: string, password: string): Observable<UserModel> {
     const url = `${this.backendUrl}authenticate`;
     const body = {username, password};
 
-    console.log(body);
+    return this.http.post<UserModel | null>(url, body)
+      .pipe(map((userData: any) => {
+        this.updateUser(userData);
+        return userData;
+      }));
+  }
+
+  checkUserExist(body: any): Observable<UserModel> {
+    const url = `${this.backendUrl}check-student-existance/`;
+
+    return this.http.post<UserModel | null>(url, body)
+  }
+
+
+  updateUser(user?: UserModel | null): void {
+    const userValue = user || this.authUserDataSubject.value;
+    this.authUserDataSubject.next(userValue);
   }
 }
