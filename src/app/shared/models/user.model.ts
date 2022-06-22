@@ -16,8 +16,8 @@ export class UserModel {
 }
 
 export enum UserRole {
-  Student = 0,
-  Admin = 1,
-  Superadmin = 2
+  Student = 1,
+  Admin = 2,
+  Superadmin = 3
 }
 
