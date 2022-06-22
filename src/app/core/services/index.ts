@@ -5,3 +5,4 @@ export { RolesService } from './common/roles.services';
 export { PageMetaService } from './common/page-meta.service';
 
 export { AuthenticationService } from './http/authentication.service';
+export { FacultyService } from './http/faculty.service';
