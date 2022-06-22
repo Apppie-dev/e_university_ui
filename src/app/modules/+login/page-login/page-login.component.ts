@@ -57,7 +57,7 @@ export class PageLoginComponent implements OnInit {
     this.formLoginError = '';
     this.formLoginLoading = true;
 
-    this.authenticationService.login(this.formLogin.value.login, this.formLogin.value.password, this.formLogin.value.rememberMe)
+    this.authenticationService.login(this.formLogin.value.login, this.formLogin.value.password)
       .subscribe((data: UserModel) => {
         this.formLoginLoading = false;
         this.router.navigate(['/']);
