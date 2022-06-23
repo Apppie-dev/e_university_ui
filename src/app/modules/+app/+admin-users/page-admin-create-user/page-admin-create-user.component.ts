@@ -3,8 +3,6 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {PageMetaModel} from "@app/models";
 import {AuthenticationService, PageMetaService, UiNotifierService} from "@app/services";
-import {Observable} from "rxjs";
-import { UsersService} from "../../../../core/services/http/users";
 
 @Component({
   selector: 'app-page-admin-create-user',
@@ -13,9 +11,9 @@ import { UsersService} from "../../../../core/services/http/users";
 })
 export class PageAdminCreateUserComponent implements OnInit {
 
-  adminCreateUserForm!: FormGroup;
-  adminCreateUserFormError = false;
-  adminCreateUserFormLoading = false;
+  CreateUserForm!: FormGroup;
+  CreateUserFormError = false;
+  CreateUserFormLoading = false;
 
   private pageTitle = 'Create User'
 
@@ -25,7 +23,6 @@ export class PageAdminCreateUserComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private authenticationService: AuthenticationService,
-/*    private usersService: UsersService,*/
     private uiNotifierService: UiNotifierService,
   ) { }
 
@@ -40,8 +37,8 @@ export class PageAdminCreateUserComponent implements OnInit {
     /*if (this.adminCreateUserForm.valid) return;   that code block console output*/
 
     const body = {
-      login: this.adminCreateUserForm.value.login,
-      email: this.adminCreateUserForm.value.email
+      login: this.CreateUserForm.value.login,
+      email: this.CreateUserForm.value.email
     }
 
     /*this.usersService.createUser(body)
@@ -52,7 +49,7 @@ export class PageAdminCreateUserComponent implements OnInit {
   }
 
   private _initForm():void {
-    this.adminCreateUserForm = this.formBuilder.group({
+    this.CreateUserForm = this.formBuilder.group({
       login: ['', [
         Validators.required
       ]],

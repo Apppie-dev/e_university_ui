@@ -1,0 +1,22 @@
+@import '../../../../../styles/variables.scss';
+header {
+  width: 650px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.btn-container {
+  width: 500px;
+  margin-top: 10px
+}
+
+.status {
+  &__active{
+    color: $systemGreen;
+  }
+  &__disabled{
+    color: $systemRed;
+  }
+}

@@ -11,12 +11,6 @@ export class UsersService {
   constructor( private http: HttpClient ) {
   }
 
- /* private backendUrl = 'https://jsonplaceholder.typicode.com/posts'
-
-  createUser(body): Observable<any> {
-    const url = "https://jsonplaceholder.typicode.com/posts";
-
-    return this.http.post<any>(url, body);
-  }*/
+ private backendUrl = `${environment.backendUrl}`
 
 }
