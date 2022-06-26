@@ -36,8 +36,10 @@ export class AuthenticationService {
   login(username: string, password: string): Observable<UserModel> {
     const url = `${this.backendUrl}login`;
     const body = "username=" + username + "&password=" + password;
+    let headers = new HttpHeaders();
+    headers = headers.append('Content-Type', 'application/x-www-form-urlencoded');
 
-    return this.http.post<UserModel | null>(url, body)
+    return this.http.post<UserModel | null>(url, body, {headers: headers})
       .pipe(map((dataUser: any) => {
         this.updateUser(dataUser);
         return dataUser;
