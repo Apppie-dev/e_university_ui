@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {UserModel} from "@app/models";
+import {FacultyModel, UserModel} from "@app/models";
 import {Subject} from "rxjs";
 import {AuthenticationService, FacultyService} from "@app/services";
 import {takeUntil} from "rxjs/operators";
@@ -11,7 +11,7 @@ import {takeUntil} from "rxjs/operators";
 })
 export class PageSuperAdminFacultyListComponent implements OnInit {
 
-  faculties!: any[];
+  faculties!: FacultyModel[];
   facultiesError = true;
   facultiesLoading = false;
 
@@ -47,11 +47,9 @@ export class PageSuperAdminFacultyListComponent implements OnInit {
 
     this.facultyService.getFaculties(this.dataUser.university_id)
       .pipe(takeUntil(this.unsubscribeRequest$))
-      .subscribe((faculties: any) => {
+      .subscribe((faculties: FacultyModel[]) => {
 
         this.faculties = faculties;
-
-        console.log(this.faculties);
 
         this.facultiesLoading = false;
         this.facultiesError = false;

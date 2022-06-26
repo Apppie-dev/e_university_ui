@@ -1,12 +1,20 @@
 export class FacultyModel {
 
-  id: number;
+  faculty_id: number;
+  main_email: string;
   name: string;
-  short_name: string;
-  main_name: string;
-  hostel_department_name: string;
-
+  shortname: string;
   university_id: number;
+
+  constructor(init?: any) {
+    Object.assign(this, init);
+  }
+}
+
+export class UserFacultyModel {
+
+  faculty: number;
+  faculty_name: string;
 
   constructor(init?: any) {
     Object.assign(this, init);

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {SETTINGS_APP} from "@app/constants";
 import {BehaviorSubject, Observable, Subject} from "rxjs";
-import {UserModel} from "@app/models";
+import {FacultyModel, UserModel} from "@app/models";
 import {environment} from "@app/environment/environment";
 
 
@@ -17,15 +17,15 @@ export class FacultyService {
 
   private backendUrl = `${environment.backendUrl}`;
 
-  createFaculty(universityId: number, body: any): Observable<any> {
+  createFaculty(universityId: number, body: Partial<FacultyModel>): Observable<FacultyModel> {
     const url = `${this.backendUrl}${universityId}/faculties/`;
 
-    return this.http.post<any>(url, body);
+    return this.http.post<FacultyModel>(url, body);
   }
 
-  getFaculties(universityId: number): Observable<any> {
+  getFaculties(universityId: number): Observable<FacultyModel[]> {
     const url = `${this.backendUrl}${universityId}/faculties/`;
 
-    return this.http.get<any>(url);
+    return this.http.get<FacultyModel[]>(url);
   }
 }

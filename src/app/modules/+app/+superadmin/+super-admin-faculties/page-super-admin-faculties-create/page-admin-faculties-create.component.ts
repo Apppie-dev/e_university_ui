@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
-import {PageMetaModel, UserModel} from "@app/models";
+import {FacultyModel, PageMetaModel, UserModel} from "@app/models";
 import {AuthenticationService, FacultyService, PageMetaService, UiNotifierService} from "@app/services";
 import {ActivatedRoute, Router} from "@angular/router";
 import {takeUntil} from "rxjs/operators";
@@ -32,7 +32,6 @@ export class PageAdminFacultiesCreateComponent implements OnInit {
     private router: Router,
     private authenticationService: AuthenticationService,
     private facultyService: FacultyService,
-    private uiNotifierService: UiNotifierService,
   ) { }
 
   ngOnInit(): void {
@@ -64,7 +63,7 @@ export class PageAdminFacultiesCreateComponent implements OnInit {
 
     this.facultyService.createFaculty(this.dataUser.university_id, body)
       .pipe(takeUntil(this.unsubscribeRequest))
-      .subscribe((data) => {
+      .subscribe((data: FacultyModel) => {
         console.log(data);
       }, (error) => {
         console.log(error);
