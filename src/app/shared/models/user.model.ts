@@ -1,6 +1,7 @@
 export class UserModel {
 
-  id: number;
+  user_id: number;
+  university_id: number;
   login: string;
 
   access_token: string;

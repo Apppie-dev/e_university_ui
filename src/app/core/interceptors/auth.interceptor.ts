@@ -16,12 +16,12 @@ export class AuthInterceptor implements HttpInterceptor {
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     // add authorization header with basic auth credentials if available
     const authUserData = this.authenticationService.authUserDataValue;
-
-    request = request.clone({
-      setHeaders: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-      }
-    });
+    //
+    // request = request.clone({
+    //   setHeaders: {
+    //     'Content-Type': 'application/x-www-form-urlencoded'
+    //   }
+    // });
     if (authUserData && authUserData.access_token) {
       request = request.clone({
         setHeaders: {

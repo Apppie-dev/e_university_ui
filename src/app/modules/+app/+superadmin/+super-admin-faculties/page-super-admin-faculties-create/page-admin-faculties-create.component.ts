@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {PageMetaModel, UserModel} from "@app/models";
-import {HttpErrorResponse} from "@angular/common/http";
 import {AuthenticationService, FacultyService, PageMetaService, UiNotifierService} from "@app/services";
 import {ActivatedRoute, Router} from "@angular/router";
-import {SETTINGS_APP} from "@app/constants";
+import {takeUntil} from "rxjs/operators";
+import {Subject} from "rxjs";
 
 @Component({
   selector: 'page-admin-faculties-create',
@@ -14,9 +14,14 @@ import {SETTINGS_APP} from "@app/constants";
 
 export class PageAdminFacultiesCreateComponent implements OnInit {
 
+  dataUser: UserModel | null = null;
+
   createFacultyForm!: FormGroup;
   createFacultyFormError = false;
   createFacultyFormLoading = false;
+
+  private unsubscribePage$ = new Subject();
+  private unsubscribeRequest = new Subject();
 
   private pageTitle = 'Faculty Editor'
 
@@ -34,7 +39,15 @@ export class PageAdminFacultiesCreateComponent implements OnInit {
     this.pageMetaService.setData(new PageMetaModel({
       title: this.pageTitle
     }));
-    this._initForm();
+
+    this.authenticationService.authUserData$
+      .pipe(takeUntil(this.unsubscribePage$))
+      .subscribe((dataUser: UserModel) => {
+        if (dataUser && dataUser.user_id) {
+          this.dataUser = dataUser;
+          this._initForm();
+        }
+      });
   }
 
   actionSave(): void {
@@ -43,17 +56,19 @@ export class PageAdminFacultiesCreateComponent implements OnInit {
     }
 
     const body = {
-      university_id: 0,
+      university_id: 1,
       name: this.createFacultyForm.value.name,
       main_email: this.createFacultyForm.value.email,
       shortname: this.createFacultyForm.value.shortName,
-      hostel_email: this.createFacultyForm.value.hostelEmail
     }
 
-    this.facultyService.createFaculty(body, "0")
-      .subscribe( (faculty) => {
+    this.facultyService.createFaculty(this.dataUser.university_id, body)
+      .pipe(takeUntil(this.unsubscribeRequest))
+      .subscribe((data) => {
+        console.log(data);
+      }, (error) => {
+        console.log(error);
       })
-
   }
 
   private _initForm(): void {
@@ -66,9 +81,6 @@ export class PageAdminFacultiesCreateComponent implements OnInit {
       ]],
       email: ['', [
         Validators.required
-      ]],
-      hostelEmail: ['', [
-        Validators.required,
       ]],
     });
   }

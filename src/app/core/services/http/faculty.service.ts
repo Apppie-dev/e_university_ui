@@ -13,14 +13,19 @@ export class FacultyService {
   constructor(
     private http: HttpClient
   ) {
-
   }
 
   private backendUrl = `${environment.backendUrl}`;
 
-  createFaculty(body: any, universityId: string): Observable<any> {
+  createFaculty(universityId: number, body: any): Observable<any> {
     const url = `${this.backendUrl}${universityId}/faculties/`;
 
     return this.http.post<any>(url, body);
+  }
+
+  getFaculties(universityId: number): Observable<any> {
+    const url = `${this.backendUrl}${universityId}/faculties/`;
+
+    return this.http.get<any>(url);
   }
 }
