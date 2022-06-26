@@ -9,7 +9,7 @@ import { SETTINGS_NOTIFICATION } from '@app/constants';
 @Injectable({
   providedIn: 'root'
 })
-export class RoleSuperAdminGuard implements CanActivate {
+export class RoleStudentGuard implements CanActivate {
 
   constructor(
     private authenticationService: AuthenticationService,
@@ -26,7 +26,7 @@ export class RoleSuperAdminGuard implements CanActivate {
 
           const userRole = userModel ? userModel.role[0] : null;
 
-          if (userRole && RolesService.isSuperAdminRole(userRole)) {
+          if (userRole && RolesService.isStudentRole(userRole)) {
             return true;
           }
 

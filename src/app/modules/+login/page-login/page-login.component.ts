@@ -42,9 +42,9 @@ export class PageLoginComponent implements OnInit {
     // redirect HOME if already logged in
     const authUserData = this.authenticationService.authUserDataValue;
 
-    if (authUserData) {
-      // this.router.navigate(['/']);
-      // return;
+    if (authUserData && authUserData.access_token) {
+      this.router.navigate(['/']);
+      return;
     }
   }
 
@@ -58,11 +58,12 @@ export class PageLoginComponent implements OnInit {
     this.formLoginLoading = true;
 
     this.authenticationService.login(this.formLogin.value.login, this.formLogin.value.password)
-      .subscribe((data: UserModel) => {
+      .subscribe((data: any) => {
         this.formLoginLoading = false;
         this.router.navigate(['/']);
       }, (error: HttpErrorResponse) => {
         this.formLoginLoading = false;
+        console.log(error)
 
         this.formLoginError = 'Unable to log in with provided credentials';
       });
@@ -72,7 +73,6 @@ export class PageLoginComponent implements OnInit {
     this.formLogin = this.formBuilder.group({
       login: ['', [
         Validators.required,
-        Validators.pattern(SETTINGS_APP.VALIDATION_EMAIL),
       ]],
       password: ['', [
         Validators.required,

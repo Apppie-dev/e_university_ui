@@ -5,20 +5,17 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {PageMetaModel, UserModel} from "@app/models";
 import {HttpErrorResponse} from "@angular/common/http";
 import {SETTINGS_APP} from "@app/constants";
-import {Subject} from "rxjs";
-import {takeUntil} from "rxjs/operators";
-import {UsersService} from "../../../core/services/http/users.service";
 
 @Component({
-  selector: 'page-check-exist-user',
-  templateUrl: './page-check-exist-user.component.html',
-  styleUrls: ['./page-check-exist-user.component.scss']
+  selector: 'page-password-reset',
+  templateUrl: './page-password-reset.component.html',
+  styleUrls: ['./page-password-reset.component.scss']
 })
-export class PageCheckExistUserComponent implements OnInit {
+export class PagePasswordResetComponent implements OnInit {
 
-  formCheckUser!: FormGroup;
-  formCheckUserError = '';
-  formCheckUserLoading = false;
+  formResetPassword!: FormGroup;
+  formResetPasswordError = '';
+  formResetPasswordLoading = false;
 
   private returnUrl = '/';
 
@@ -30,7 +27,6 @@ export class PageCheckExistUserComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private authenticationService: AuthenticationService,
-    private usersService: UsersService,
   ) { }
 
   ngOnInit(): void {
@@ -51,30 +47,22 @@ export class PageCheckExistUserComponent implements OnInit {
   }
 
   actionSave(): void {
-    if (this.formCheckUser.invalid) {
+
+    if (this.formResetPassword.invalid) {
       return;
     }
 
-    this.formCheckUserError = '';
-    this.formCheckUserLoading = true;
-
-    const body = {
-      full_name: this.formCheckUser.value.username,
-      telephone_number: '380' + this.formCheckUser.value.phone
-    }
-
-    this.usersService.checkUserExist(body)
-      .subscribe((data) => {
-        this.router.navigate([`login/registration`], {queryParams: {token: data.token}})
-      }, (error: HttpErrorResponse) => {
-      });
+    this.formResetPasswordError = '';
+    this.formResetPasswordLoading = true;
   }
 
   private _initForm(): void {
-    this.formCheckUser = this.formBuilder.group({
-      username: ['', [
+    this.formResetPassword = this.formBuilder.group({
+      password: ['', [
+        Validators.required,
       ]],
-      phone: ['', [
+      retype_password: ['', [
+        Validators.required,
       ]],
     });
   }

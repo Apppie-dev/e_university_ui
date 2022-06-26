@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { PageLoginComponent } from './page-login/page-login.component';
-import { PasswordResetComponent} from "./password-reset/password-reset.component";
+import { PagePasswordResetComponent} from "./page-password-reset/page-password-reset.component";
 import {PageCheckExistUserComponent} from "./page-check-exist-user/page-check-exist-user.component";
 import {PageRegistrationComponent} from "./page-registration/page-registration.component";
 
@@ -13,7 +13,7 @@ const moduleRoutes: Routes = [
   },
   {
     path: 'reset-password',
-    component: PasswordResetComponent
+    component: PagePasswordResetComponent
   },
   {
     path: 'check-exist-user',

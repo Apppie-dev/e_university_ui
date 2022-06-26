@@ -1,18 +1,19 @@
 import { NgModule } from '@angular/core';
-import { AppRoutesModule } from './app.routes.module';
-import { PageAppComponent } from './page-app/page-app.component';
 import { CommonModule } from '@angular/common';
 import { SharedModule } from '@app/shared/shared.module';
+import {PageStudentComponent} from "./page-student/page-student.component";
+import {StudentRoutesModule} from "./student.routes.module";
 
 @NgModule({
   declarations: [
-    PageAppComponent,
+    PageStudentComponent
   ],
   imports: [
-    AppRoutesModule,
     CommonModule,
+    StudentRoutesModule,
     SharedModule,
+
   ]
 })
-export class AppModule {
+export class StudentModule {
 }

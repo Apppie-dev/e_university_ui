@@ -1,18 +1,19 @@
 import { NgModule } from '@angular/core';
-import { AppRoutesModule } from './app.routes.module';
-import { PageAppComponent } from './page-app/page-app.component';
 import { CommonModule } from '@angular/common';
 import { SharedModule } from '@app/shared/shared.module';
+import {SuperAdminRoutesModule} from "./superadmin.routes.module";
+import {PageSuperAdminComponent} from "./page-superadmin/page-superadmin.component";
 
 @NgModule({
   declarations: [
-    PageAppComponent,
+    PageSuperAdminComponent,
   ],
   imports: [
-    AppRoutesModule,
+    SuperAdminRoutesModule,
     CommonModule,
     SharedModule,
+
   ]
 })
-export class AppModule {
+export class SuperAdminModule {
 }

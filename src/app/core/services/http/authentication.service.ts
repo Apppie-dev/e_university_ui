@@ -1,11 +1,12 @@
 ﻿import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {LocalStorageService} from "../common/local-storage.service";
 import {SETTINGS_APP} from "@app/constants";
 import {BehaviorSubject, Observable, Subject} from "rxjs";
 import {UserModel} from "@app/models";
 import {environment} from "@app/environment/environment";
 import {map} from "rxjs/operators";
+import {UsersService} from "./users.service";
 
 
 @Injectable({
@@ -14,7 +15,8 @@ import {map} from "rxjs/operators";
 export class AuthenticationService {
   constructor(
     private http: HttpClient,
-    private localStorageService: LocalStorageService
+    private localStorageService: LocalStorageService,
+    private userService: UsersService
   ) {
     const storageUserData = this.localStorageService.getRecord(SETTINGS_APP.STORE_DATA_KEYS.AUTH);
 
@@ -32,8 +34,8 @@ export class AuthenticationService {
   private backendUrl = `${environment.backendUrl}`;
 
   login(username: string, password: string): Observable<UserModel> {
-    const url = `${this.backendUrl}authenticate`;
-    const body = {username, password};
+    const url = `${this.backendUrl}login`;
+    const body = "username=" + username + "&password=" + password;
 
     return this.http.post<UserModel | null>(url, body)
       .pipe(map((userData: any) => {
@@ -42,15 +44,16 @@ export class AuthenticationService {
       }));
   }
 
-  checkUserExist(body: any): Observable<UserModel> {
-    const url = `${this.backendUrl}check-student-existance/`;
-
-    return this.http.post<UserModel | null>(url, body)
-  }
-
-
   updateUser(user?: UserModel | null): void {
     const userValue = user || this.authUserDataSubject.value;
     this.authUserDataSubject.next(userValue);
+
+    this.userService.getSelf()
+      .subscribe((data: any) => {
+        const userFullData = {...userValue, ...data};
+        this.localStorageService.setRecord(SETTINGS_APP.STORE_DATA_KEYS.AUTH, userFullData);
+        this.authUserDataSubject.next(userFullData);
+      })
   }
+
 }

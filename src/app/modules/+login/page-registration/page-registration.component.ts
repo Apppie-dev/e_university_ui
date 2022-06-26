@@ -5,6 +5,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {PageMetaModel, UserModel} from "@app/models";
 import {HttpErrorResponse} from "@angular/common/http";
 import {SETTINGS_APP} from "@app/constants";
+import {UsersService} from "../../../core/services/http/users.service";
 
 @Component({
   selector: 'page-registration',
@@ -13,8 +14,10 @@ import {SETTINGS_APP} from "@app/constants";
 })
 export class PageRegistrationComponent implements OnInit {
 
+  token = '';
+
   formRegistration: FormGroup;
-  formRegistrationError = '';
+  formRegistrationError = false;
   formRegistrationLoading = false;
 
   private returnUrl = '/';
@@ -27,22 +30,34 @@ export class PageRegistrationComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private authenticationService: AuthenticationService,
-  ) { }
+    private usersService: UsersService,
+  ) {
+    this._initForm();
+  }
+
+
+  get form() {
+    return this.formRegistration.controls;
+  }
 
   ngOnInit(): void {
+    this.token = this.route.snapshot.queryParams ? this.route.snapshot.queryParams[SETTINGS_APP.URL_TOKEN_KEY] : null;
+    {
+      !this.token ? this.form.email.disable() : this.form.email.enable();
+      !this.token ? this.form.password.disable() : this.form.password.enable();
+      !this.token ? this.form.retype_password.disable() : this.form.retype_password.enable();
+    }
+
     this.pageMetaService.setData(new PageMetaModel({
       title: this.pageTitle
     }));
 
-
-    this._initForm();
-
     // redirect HOME if already logged in
     const authUserData = this.authenticationService.authUserDataValue;
 
-    if (authUserData) {
-      // this.router.navigate(['/']);
-      // return;
+    if (authUserData && authUserData.access_token) {
+      this.router.navigate(['/']);
+      return;
     }
   }
 
@@ -52,24 +67,36 @@ export class PageRegistrationComponent implements OnInit {
       return;
     }
 
-    this.formRegistrationError = '';
+    this.formRegistrationError = false;
     this.formRegistrationLoading = true;
 
-    console.log(this.formRegistration.value.email)
-    console.log(this.formRegistration.value.password)
-    console.log(this.formRegistration.value.retype_password)
+    const body = {
+      token: this.token,
+      email: this.formRegistration.value.email,
+      password: this.formRegistration.value.password,
+      password_re_check: this.formRegistration.value.retype_password,
+    }
+
+    this.usersService.registrationUser(body)
+      .subscribe((data: any) => {
+
+        this.formRegistrationLoading = false;
+      }, (error: any) => {
+        console.log(error);
+        this.formRegistrationError = true;
+        this.formRegistrationLoading = false;
+      })
   }
 
   private _initForm(): void {
     this.formRegistration = this.formBuilder.group({
-      email: ['', [
-        Validators.required,
-        Validators.pattern(SETTINGS_APP.VALIDATION_EMAIL),
-      ]],
-      password: ['', [
+      email: [{value: '', disabled: true}, [
         Validators.required,
       ]],
-      retype_password: ['', [
+      password: [{value: '', disabled: true}, [
+        Validators.required,
+      ]],
+      retype_password: [{value: '', disabled: true}, [
         Validators.required,
       ]],
     });

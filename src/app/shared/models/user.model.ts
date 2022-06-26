@@ -3,11 +3,13 @@ export class UserModel {
   id: number;
   login: string;
 
+  access_token: string;
+
   last_visit: string;
   password: string;
   email: string;
 
-  role_id: null | UserRole;
+  role: null | UserRoleModel[];
   is_active: boolean;
 
   constructor(init?: any) {
@@ -15,9 +17,13 @@ export class UserModel {
   }
 }
 
-export enum UserRole {
-  Student = 1,
-  Admin = 2,
-  Superadmin = 3
+export class UserRoleModel {
+
+  role: number;
+  role_name: string;
+
+  constructor(init?: any) {
+    Object.assign(this, init);
+  }
 }
 

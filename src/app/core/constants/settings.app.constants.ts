@@ -2,11 +2,12 @@ export const SETTINGS_APP = {
 
   // urls + redirect
   URL_LOGIN: '/login',
+  URL_RETURN_KEY: 'returnUrl',
+  URL_TOKEN_KEY: 'token',
 
-  URL_HOME_CLIENT: '/dashboard/',
-  URL_HOME_ADMIN: '/admin/dashboard/',
-
-  VALIDATION_EMAIL: RegExp(/^[a-zA-Z!#$%&'*\/=?^`]+[a-zA-Z0-9.!+#$%&'*\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?\.(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?){2,61}$/),
+  URL_HOME_STUDENT: 'app/student/dashboard',
+  URL_HOME_ADMIN: 'app/admin/dashboard/',
+  URL_HOME_SUPER_ADMIN: 'app/super-admin/dashboard/',
 
   // Local Storage Keys
   STORE_DATA_KEYS: {
