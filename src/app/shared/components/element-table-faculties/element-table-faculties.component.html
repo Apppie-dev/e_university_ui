@@ -1,0 +1,87 @@
+<div class="table-wrapper">
+  <div class="table-body">
+    <ng-container *ngIf="!error">
+
+      <ng-container *ngIf="loading">
+       Loading...
+      </ng-container>
+
+      <ng-container *ngIf="!loading && !error && data">
+
+        <ng-container *ngIf="data.length === 0">
+          <div class="source-ips-state-empty-container">
+            <p class="source-ips-state-empty-title">
+              No source ips added yet
+            </p>
+            <a class="action-button" routerLink="/app/help/attacks-types">
+              Help Page
+            </a>
+            <p  class="source-ips-state-empty-subtitle">
+              Etiam vel sollicitudin sapien, ut tempor ex. Integer sagittis diam bibendum dolor posuere mattis.
+            </p>
+          </div>
+        </ng-container>
+
+        <ng-container *ngIf="data.length > 0">
+
+          <table class="table is-fullwidth">
+            <thead>
+            <tr>
+              <th>ID</th>
+              <th>Назва</th>
+              <th>Повна назва</th>
+              <th>Поштова адреса</th>
+              <th>Додатково</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let facultyItem of data; let facultyIndex = index">
+              <td>{{ facultyItem.faculty_id }}</td>
+              <td>{{ facultyItem.shortname }}</td>
+              <td>{{ facultyItem.name || 'n/a' }}</td>
+              <td>{{ facultyItem.main_email || 'n/a' }}</td>
+              <td>
+              <td class="cell-menu" [ngClass]="{'cell-menu-active': facultyItem.visibilityMenu}">
+                <ng-container>
+                  <div class="cell-menu-area" (click)="handleCellMenuToggle($event, facultyIndex)" appClickOutside (clickOutside)="handleCellMenuClickOutside($event)">
+                    <span class="icon"><i class="fa fa-ellipsis-v"></i></span>
+                    <div class="dropdown" [ngClass]="{'is-active': facultyItem.visibilityMenu}">
+                      <div class="dropdown-menu" id="dropdown-menu" role="menu">
+                        <div class="dropdown-content">
+                              <span class="dropdown-item">
+                                <span class="icon"><i class="fas fa-trash"></i></span>
+                                <span class="dropdown-item-title">Delete</span>
+                              </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </ng-container>
+              </td>
+
+
+
+                <svg width="4" height="18" viewBox="0 0 4 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="2" cy="2" r="2" fill="#42505C"/>
+                  <circle cx="2" cy="9" r="2" fill="#42505C"/>
+                  <circle cx="2" cy="16" r="2" fill="#42505C"/>
+                </svg>
+
+            </tr>
+            </tbody>
+          </table>
+
+        </ng-container>
+      </ng-container>
+
+    </ng-container>
+
+    <ng-container *ngIf="!loading && error">
+      <div class="error-wrapper">
+        <div class="error">Виникла помилка. Будь ласка, зв'яжіться з підтримкою</div>
+        <button class="action-button" (click)="handleReload()">Спробувати ще раз</button>
+      </div>
+    </ng-container>
+  </div>
+</div>
+

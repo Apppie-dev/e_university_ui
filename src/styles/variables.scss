@@ -9,12 +9,17 @@ $systemGray: #C4C4C4;
 $systemGrayLight: #d6d6d6;
 $systemBlack: #222222;
 
+$sidebarWidth: 22.516rem;
+
+
 // Fonts
 
 // Mulish
-$theme-font-MulishRegular: 'Mulish-Regular', 'sans-serif';
-$theme-font-MulishMedium: 'Mulish-Medium', 'sans-serif';
-$theme-font-MulishBlack: 'Mulish-Black', 'sans-serif';
+$theme-font-MulishRegular: 'Mulish-Regular', 'sans-serif'; //400
+$theme-font-MulishMedium: 'Mulish-Medium', 'sans-serif'; // 500
+$theme-font-MulishBold: 'Mulish-Bold', 'sans-serif'; // 700
+$theme-font-MulishExtraBold: 'Mulish-ExtraBold', 'sans-serif'; //800
+$theme-font-MulishBlack: 'Mulish-Black', 'sans-serif'; // 900
 
 // Inter
 $theme-font-InterRegular: 'Inter-Regular', 'sans-serif';

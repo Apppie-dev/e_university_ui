@@ -1,5 +1,4 @@
-import { Component, ElementRef, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
 
 
 @Component({
@@ -7,6 +6,12 @@ import { Router } from '@angular/router';
   templateUrl: './core-sidebar.component.html',
   styleUrls: ['./core-sidebar.component.scss']
 })
-export class CoreSidebarComponent {
+export class CoreSidebarComponent implements OnInit {
 
+  constructor() {
+  }
+
+  ngOnInit(): void {
+
+  }
 }

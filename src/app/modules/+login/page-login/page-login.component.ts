@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {AuthenticationService, PageMetaService, UiNotifierService} from '@app/services';
+import {AuthenticationService, ErrorLoggerService, PageMetaService, UiNotifierService} from '@app/services';
 import { PageMetaModel } from '@app/shared/models/page-meta.model';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
 import {HttpErrorResponse} from "@angular/common/http";
-import {UserModel} from "@app/models";
-import {SETTINGS_APP, SETTINGS_NOTIFICATION} from "@app/constants";
 
 @Component({
   selector: 'page-login',
@@ -18,8 +16,6 @@ export class PageLoginComponent implements OnInit {
   formLoginError = '';
   formLoginLoading = false;
 
-  private returnUrl = '/';
-
   private pageTitle = 'Login';
 
   constructor(
@@ -28,7 +24,8 @@ export class PageLoginComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private authenticationService: AuthenticationService,
-    private uiNotifierService: UiNotifierService
+    private uiNotifierService: UiNotifierService,
+    private errorLoggerService: ErrorLoggerService
   ) { }
 
   ngOnInit(): void {
@@ -58,14 +55,14 @@ export class PageLoginComponent implements OnInit {
     this.formLoginLoading = true;
 
     this.authenticationService.login(this.formLogin.value.login, this.formLogin.value.password)
-      .subscribe((data: any) => {
+      .subscribe(() => {
         this.formLoginLoading = false;
         this.router.navigate(['/']);
       }, (error: HttpErrorResponse) => {
-        this.formLoginLoading = false;
-        console.log(error)
+        this.uiNotifierService.showError(error.error.detail);
 
-        this.formLoginError = 'Unable to log in with provided credentials';
+        this.errorLoggerService.logHttpError(error);
+        this.formLoginLoading = false;
       });
   }
 

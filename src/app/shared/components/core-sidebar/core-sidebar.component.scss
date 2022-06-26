@@ -1,0 +1,108 @@
+@import '~src/styles/variables';
+
+.layout-sidebar-wrapper {
+  position: fixed;
+  height: 100%;
+  width: $sidebarWidth;
+  color: #fff;
+  z-index: 100;
+  transition: width 0.3s;
+  overflow: hidden;
+  padding: 0.83rem 0 2.8rem 0;
+  box-sizing: border-box;
+  background: url('/assets/img/sidebar-bg.png') no-repeat 0 0 transparent;
+  background-size: $sidebarWidth;
+}
+
+.layout-sidebar {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+
+  .sidebar-title {
+    text-align: center;
+    font-family: $theme-font-MulishBlack;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 1.25rem;
+    line-height: 1.15rem;
+    letter-spacing: 0.015rem;
+    color: #F2F2F2;
+    opacity: 0.99;
+
+    margin-top: 1.25rem;
+    margin-bottom: 2.8rem;
+  }
+
+  .sidebar-menus {
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: auto;
+    width: 100%;
+    flex-grow: 1;
+
+    .sidebar-menu-item {
+      margin-bottom: 6px;
+      height: 54px;
+
+      &:first-of-type {
+        margin-top: 0;
+      }
+
+      a {
+        padding-left: 1.715rem;
+        position: relative;
+        height: inherit;
+        display: flex;
+        align-items: center;
+
+        &.active {
+          &:before {
+            content: " ";
+            display: block;
+            background-color: #fff;
+            position: absolute;
+            height: 1.925rem;
+            width: 0.365rem;
+            left: 0;
+            border-radius: 0 0.4rem 0.4rem 0;
+          }
+        }
+      }
+
+      .sidebar-menu-item-icon {
+        height: 1.25rem;
+        margin-right: 0.415rem;
+        text-align: center;
+
+        svg {
+          height: inherit;
+        }
+      }
+      .sidebar-menu-item-text {
+        display: block;
+        padding-left: 3px;
+        font-family: $theme-font-MulishBold;
+        font-weight: 700;
+        font-size: 0.94rem;
+        line-height: 1.15rem;
+        color: #FFFFFF;
+      }
+
+      &--disabled {
+        a {
+          opacity: 0.3;
+          &:hover, .active {
+            opacity: 0.3;
+            cursor: not-allowed;
+          }
+        }
+      }
+    }
+  }
+}

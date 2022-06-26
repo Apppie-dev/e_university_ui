@@ -1,0 +1,134 @@
+@import '~src/styles/variables';
+
+.table-wrapper {
+  border-radius: 8px;
+
+  &.table-wrapper-border {
+    border: 1px solid #E6E7E9;
+  }
+
+  .table-title {
+    font-family: 'Roboto', 'sans-serif';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 28px;
+    line-height: 33px;
+    margin-bottom: 27px;
+
+    color: #000000;
+  }
+  .table-body {
+    padding: 0 12px 12px 0;
+    overflow: auto;
+  }
+  .table-footer {
+    padding: 12px 12px 12px 24px;
+    border-top: 1px solid #E6E7E9;
+  }
+}
+
+.table {
+  box-shadow: 0 0.2rem 0.675rem rgba(0, 0, 0, 0.05);
+  margin: 0 !important;
+  thead {
+    tr {
+      th {
+        font-family: $theme-font-MulishBold;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 22px;
+        color: #8692A6;
+
+        &.table-options-button {
+          cursor: pointer;
+          width: 40px;
+
+          svg {
+            width: 40px;
+            height: 40px;
+          }
+        }
+      }
+    }
+  }
+
+  th {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    color: #181819;
+    opacity: 0.9;
+    height: 48px;
+    padding: 0 8px;
+    vertical-align: middle;
+  }
+  td {
+    font-family: $theme-font-MulishMedium;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 150%;
+    color: #42505C;
+  }
+  td.loading {
+
+  }
+  td.cell-bold {
+    font-weight: 500;
+  }
+  td.no-data {
+    text-align: center;
+    height: auto;
+    padding: 24px 0 3px 0;
+    color: #181819;
+    opacity: 0.5;
+  }
+
+  .cell-menu {
+    position: relative;
+
+    .cell-menu-area {
+      cursor: pointer;
+    }
+
+    &-active {
+      z-index: 2;
+    }
+
+    .dropdown {
+      position: absolute;
+      top: 36px;
+      right: 120px;
+
+      .dropdown-content {
+        padding: 4px 0;
+      }
+
+      .dropdown-menu {
+        width: 120px;
+        min-width: auto;
+      }
+
+      .dropdown-item {
+        padding: 4px 8px;
+        cursor: pointer;
+
+        .icon {
+          margin: 0 8px 0 0;
+        }
+      }
+    }
+  }
+
+  .row-inactive {
+    cursor: not-allowed;
+    td {
+      opacity: 0.25;
+      div {
+        cursor: not-allowed !important;
+      }
+    }
+  }
+}

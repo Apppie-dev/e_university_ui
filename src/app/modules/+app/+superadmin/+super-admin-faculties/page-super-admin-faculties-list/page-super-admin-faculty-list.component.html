@@ -1,1 +1,29 @@
-<p>page-admin-faculty-list works!</p>
+<div class="section is-main-section">
+
+  <div class="level content-title">
+    <div class="level-left fullwidth-block">
+      <div class="level-item section-layout-header">
+        <div class="title">
+          <span>Список факультетiв</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="level-faculties">
+    <div class="level-attack-source-ips-content">
+
+      <element-table-faculties
+        [loading]="dataLoading"
+        [error]="dataError"
+        [data]="data"
+        [link]="false"
+        [loadingAmount]="13"
+        (notifyReload)="loadDataFaculties()"
+      ></element-table-faculties>
+
+    </div>
+  </div>
+
+</div>

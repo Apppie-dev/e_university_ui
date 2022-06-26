@@ -6,6 +6,14 @@ export class FacultyModel {
   shortname: string;
   university_id: number;
 
+
+
+  // Meta Info :: Front Only
+
+  visibilityState?: boolean;
+  visibilityMenu?: boolean;
+  metaInactive?: boolean;
+
   constructor(init?: any) {
     Object.assign(this, init);
   }

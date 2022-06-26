@@ -39,4 +39,11 @@ export class UiNotifierService {
   showError(text: string, template?: TemplateRef<any> | undefined): void {
     this.show('error', text, template);
   }
+  requestError(error: any): void {
+    if (error.error && error.error.hasOwnProperty('valid') && error.error.valid === false && error.error.hasOwnProperty('data')) {
+      this.showError(UtilsService.getErrorsArray(error.error.data).join('<br>'));
+    } else {
+      this.showError(SETTINGS_NOTIFICATION.TEXT.ERROR_SERVER);
+    }
+  }
 }

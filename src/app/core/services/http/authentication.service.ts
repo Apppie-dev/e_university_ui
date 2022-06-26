@@ -38,9 +38,9 @@ export class AuthenticationService {
     const body = "username=" + username + "&password=" + password;
 
     return this.http.post<UserModel | null>(url, body)
-      .pipe(map((userData: any) => {
-        this.updateUser(userData);
-        return userData;
+      .pipe(map((dataUser: any) => {
+        this.updateUser(dataUser);
+        return dataUser;
       }));
   }
 

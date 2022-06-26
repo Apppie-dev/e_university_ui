@@ -1,6 +1,6 @@
 export const SETTINGS_NOTIFICATION = {
 
-  HIDE: 5000,
+  HIDE: 200000,
 
   TEXT: {
     ERROR_SERVER: 'An error occurred. Please contact support',

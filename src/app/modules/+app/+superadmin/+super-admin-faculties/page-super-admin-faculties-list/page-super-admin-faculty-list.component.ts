@@ -7,13 +7,13 @@ import {takeUntil} from "rxjs/operators";
 @Component({
   selector: 'page-super-admin-faculty-list',
   templateUrl: './page-super-admin-faculty-list.component.html',
-  styleUrls: ['./page-super-admin-faculty-list.component.css']
+  styleUrls: ['./page-super-admin-faculty-list.component.scss']
 })
 export class PageSuperAdminFacultyListComponent implements OnInit {
 
-  faculties!: FacultyModel[];
-  facultiesError = true;
-  facultiesLoading = false;
+  data!: FacultyModel[];
+  dataError = true;
+  dataLoading = false;
 
   dataUser: UserModel | null = null;
 
@@ -31,33 +31,30 @@ export class PageSuperAdminFacultyListComponent implements OnInit {
       .subscribe((dataUser: UserModel) => {
         if (dataUser && dataUser.user_id) {
           this.dataUser = dataUser;
-          this.loadData();
+          this.loadDataFaculties();
         }
       });
   }
 
-  loadData(): void {
-    this.loadFaculties();
-  }
-
-  loadFaculties(): void {
-    this.facultiesLoading = true;
-    this.facultiesError = false;
+  loadDataFaculties(): void {
+    this.dataLoading = true;
+    this.dataError = false;
     this.unsubscribeRequest$.next();
 
     this.facultyService.getFaculties(this.dataUser.university_id)
       .pipe(takeUntil(this.unsubscribeRequest$))
       .subscribe((faculties: FacultyModel[]) => {
+        console.log(faculties);
 
-        this.faculties = faculties;
+        this.data = faculties;
 
-        this.facultiesLoading = false;
-        this.facultiesError = false;
+        this.dataLoading = false;
+        this.dataError = false;
 
       }, (error: any) => {
         console.log(error)
-        this.facultiesLoading = false;
-        this.facultiesError = true;
+        this.dataLoading = false;
+        this.dataError = true;
 
       });
   }

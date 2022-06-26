@@ -4,5 +4,6 @@ export { UiNotifierService } from './common/ui-notifier.service';
 export { RolesService } from './common/roles.services';
 export { PageMetaService } from './common/page-meta.service';
 
+export { ErrorLoggerService } from './http/error-logger.service';
 export { AuthenticationService } from './http/authentication.service';
 export { FacultyService } from './http/faculty.service';

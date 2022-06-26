@@ -39,7 +39,9 @@ export class PageAppComponent implements OnInit {
       )
       .subscribe((dataUser: UserModel) => {
         this.dataUser = dataUser;
-        this.resolveCoreModuleRedirect();
+        if (dataUser.role) {
+          this.resolveCoreModuleRedirect();
+        }
       });
 
     this.router.events
@@ -58,7 +60,6 @@ export class PageAppComponent implements OnInit {
         }
       });
   }
-
 
   private resolveCoreModuleRedirect(): void {
     const url = this.router.url;

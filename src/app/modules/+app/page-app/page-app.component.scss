@@ -1,0 +1,112 @@
+@import '~src/styles/variables';
+
+.layout-wrapper {
+  background: #F2F2F2;
+}
+
+.layout-content-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
+  padding: 0;
+  margin-left: $sidebarWidth;
+  transition: margin-left 0.3s;
+  background: #FFFFFF;
+}
+
+.layout-content {
+  padding: 24px 0 28px 30px;
+}
+
+.layout-loader {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 10000;
+  background-color: rgba(0, 0, 0, .4);
+
+  .layout-loader-wrapper {
+    width: 150px;
+    height: 150px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+
+    svg {
+      width: 90%;
+      fill: none;
+    }
+
+    .load {
+      transform-origin: 50% 50%;
+      stroke-dasharray: 0.7 0.3;
+      stroke-linecap: round;
+      stroke-width: 3px;
+      stroke: $systemGrayLight;
+
+      &.one {
+        animation: load 1.5s infinite ease-in;
+        animation-direction: reverse;
+      }
+      &.two {
+        fill: $systemGrayLight;
+      }
+      &.three {
+        animation: load 1.5s infinite;
+      }
+    }
+
+    @keyframes load {
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  }
+}
+
+
+@media(max-width: 775px) {
+  .layout-content {
+    padding: 80px 24px 24px 24px;
+
+    ::ng-deep {
+      .section .section-layout-header {
+        padding-right: 0;
+      }
+
+      .level-table {
+        padding: 0;
+      }
+
+      .level-attack-source-ips {
+        .level-attack-source-ips-content {
+          padding: 0;
+        }
+      }
+
+      .level-affected-edges {
+        .level-affected-edges-content {
+          padding: 0;
+        }
+      }
+
+      .level-past-incidents {
+        .level-past-incidents-content {
+          padding: 0;
+        }
+      }
+
+      .section .section-layout-header core-pagination {
+        margin-left: 0;
+      }
+
+      .pagination {
+        flex-wrap: nowrap;
+      }
+    }
+  }
+}

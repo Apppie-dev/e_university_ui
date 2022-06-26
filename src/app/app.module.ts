@@ -7,6 +7,7 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {SharedModule} from "@app/shared/shared.module";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {AuthInterceptor} from "@app/interceptors";
+import {NotifierModule} from "angular-notifier";
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import {AuthInterceptor} from "@app/interceptors";
     SharedModule,
     BrowserModule,
     BrowserAnimationsModule,
+    NotifierModule,
   ],
   providers: [
     {
