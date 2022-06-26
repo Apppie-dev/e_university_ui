@@ -7,3 +7,5 @@ export { PageMetaService } from './common/page-meta.service';
 export { ErrorLoggerService } from './http/error-logger.service';
 export { AuthenticationService } from './http/authentication.service';
 export { FacultyService } from './http/faculty.service';
+export { OrdersService } from './http/orders.service';
+export { UsersService } from './http/users.service'
