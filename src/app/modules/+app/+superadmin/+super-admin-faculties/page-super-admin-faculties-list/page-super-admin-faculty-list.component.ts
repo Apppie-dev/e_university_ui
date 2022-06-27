@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FacultyModel, UserModel} from "@app/models";
 import {Subject} from "rxjs";
-import {AuthenticationService, FacultyService} from "@app/services";
+import {AuthenticationService, ErrorLoggerService, FacultyService} from "@app/services";
 import {takeUntil} from "rxjs/operators";
 
 @Component({
@@ -23,6 +23,7 @@ export class PageSuperAdminFacultyListComponent implements OnInit {
   constructor(
     private facultyService: FacultyService,
     private authenticationService: AuthenticationService,
+    private errorLoggerService: ErrorLoggerService
   ) { }
 
   ngOnInit(): void {
@@ -44,18 +45,16 @@ export class PageSuperAdminFacultyListComponent implements OnInit {
     this.facultyService.getFaculties(this.dataUser.university_id)
       .pipe(takeUntil(this.unsubscribeRequest$))
       .subscribe((faculties: FacultyModel[]) => {
-        console.log(faculties);
-
         this.data = faculties;
 
         this.dataLoading = false;
         this.dataError = false;
 
       }, (error: any) => {
-        console.log(error)
         this.dataLoading = false;
         this.dataError = true;
 
+        this.errorLoggerService.logHttpError(error);
       });
   }
 

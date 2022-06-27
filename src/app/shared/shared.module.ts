@@ -5,7 +5,7 @@ import { RouterModule } from '@angular/router';
 import {
   CorePaginationComponent,
   CoreSidebarComponent,
-  CoreUserMenuComponent, ElementTableFacultiesComponent, ElementUniversityLogoComponent,
+  CoreUserMenuComponent, ElementTableFacultiesComponent, ElementTableUsersComponent, ElementUniversityLogoComponent,
 
   FormFieldErrorsComponent,
 } from './components';
@@ -31,6 +31,7 @@ import {AppPasswordInputDirective} from "@app/shared/directive/app-password-inpu
 
     ElementTableFacultiesComponent,
     ElementUniversityLogoComponent,
+    ElementTableUsersComponent,
 
     FormFieldErrorsComponent,
   ],
@@ -48,6 +49,7 @@ import {AppPasswordInputDirective} from "@app/shared/directive/app-password-inpu
 
     ElementTableFacultiesComponent,
     ElementUniversityLogoComponent,
+    ElementTableUsersComponent,
 
     FormFieldErrorsComponent,
   ],

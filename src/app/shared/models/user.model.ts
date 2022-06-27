@@ -18,6 +18,12 @@ export class UserModel {
 
   is_active: boolean;
 
+  // Meta Info :: Front Only
+
+  visibilityState?: boolean;
+  visibilityMenu?: boolean;
+  metaInactive?: boolean;
+
   constructor(init?: any) {
     Object.assign(this, init);
   }

@@ -4,6 +4,7 @@ export { CoreUserMenuComponent } from './core-user-menu/core-user-menu.component
 
 export { ElementUniversityLogoComponent } from './element-university-logo/element-university-logo.component';
 export { ElementTableFacultiesComponent } from './element-table-faculties/element-table-faculties.component';
+export { ElementTableUsersComponent } from './element-table-users/element-table-users.component';
 
 export { FormFieldErrorsComponent } from './form-field-errors/form-field-errors.component';
 

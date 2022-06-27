@@ -11,4 +11,19 @@
   </div>
 
 
+  <div class="level-users">
+    <div class="level-users-content">
+
+      <element-table-users
+        [loading]="dataLoading"
+        [error]="dataError"
+        [data]="data"
+        [link]="false"
+        [loadingAmount]="13"
+        (notifyReload)="loadDataUsers()"
+      ></element-table-users>
+
+    </div>
+  </div>
+
 </div>

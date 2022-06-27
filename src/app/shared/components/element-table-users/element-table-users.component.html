@@ -1,0 +1,75 @@
+<div class="table-wrapper">
+  <div class="table-body">
+    <ng-container *ngIf="!error">
+
+      <ng-container *ngIf="loading">
+        Loading...
+      </ng-container>
+
+      <ng-container *ngIf="!loading && !error && data">
+
+        <ng-container *ngIf="data.length > 0">
+
+          <table class="table is-fullwidth is-hoverable">
+            <thead>
+            <tr>
+              <th>ID</th>
+              <th>Факультет</th>
+              <th>ПІБ студента</th>
+              <th>Стан користувача</th>
+              <th>Электронна пошта</th>
+              <th>Логiн</th>
+              <th>Останнiй вiзит</th>
+              <th>Роль</th>
+              <th>Додатково</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let userItem of data; let userIndex = index">
+              <td>{{ userItem.user_id }}</td>
+              <td>{{ userItem.faculties[0].faculty_name }}</td>
+              <td>{{ userItem.name || 'n/a' }}</td>
+              <td>{{ userItem.is_active ? 'Активний' : 'Неактивний'}}</td>
+              <td>{{ userItem.email}}</td>
+              <td>{{ userItem.login}}</td>
+              <td>{{ userItem.last_visit || 'n/a' }}</td>
+              <td>{{ userItem.role[0].role_name }}</td>
+              <td width="10%" class="cell-menu" [ngClass]="{'cell-menu-active': userItem.visibilityMenu}">
+                <ng-container>
+                  <div class="cell-menu-area" (click)="handleCellMenuToggle($event, userIndex)" appClickOutside (clickOutside)="handleCellMenuClickOutside($event)">
+                    <svg width="4" height="18" viewBox="0 0 4 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <circle cx="2" cy="2" r="2" fill="#42505C"/>
+                      <circle cx="2" cy="9" r="2" fill="#42505C"/>
+                      <circle cx="2" cy="16" r="2" fill="#42505C"/>
+                    </svg>
+                    <div class="dropdown" [ngClass]="{'is-active': userItem.visibilityMenu}">
+                      <div class="dropdown-menu" id="dropdown-menu" role="menu">
+                        <div class="dropdown-content">
+                              <span class="dropdown-item">
+                                <span class="dropdown-item-title">Редагувати факультет</span>
+                              </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </ng-container>
+              </td>
+
+            </tr>
+            </tbody>
+          </table>
+
+        </ng-container>
+      </ng-container>
+
+    </ng-container>
+
+    <ng-container *ngIf="!loading && error">
+      <div class="error-wrapper">
+        <div class="error">Виникла помилка. Будь ласка, зв'яжіться з підтримкою</div>
+        <button class="action-button" (click)="handleReload()">Спробувати ще раз</button>
+      </div>
+    </ng-container>
+  </div>
+</div>
+

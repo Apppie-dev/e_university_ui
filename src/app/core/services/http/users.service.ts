@@ -2,6 +2,7 @@ import {environment} from "@app/environment/environment";
 import {HttpClient} from "@angular/common/http";
 import { Injectable } from '@angular/core';
 import {Observable} from "rxjs";
+import {UserModel} from "@app/models";
 
 @Injectable({
   providedIn: 'root'
@@ -29,5 +30,11 @@ export class UsersService {
     const url = `${this.backendUrl}me`;
 
     return this.http.get<any>(url)
+  }
+
+  getUsers(universityId: number): Observable<UserModel[]> {
+    const url = `${this.backendUrl}${universityId}/users/`;
+
+    return this.http.get<UserModel[]>(url)
   }
 }
