@@ -1,20 +1,69 @@
-<div>
-  <h1>Новий фалькутет</h1><br>
-  <div class = "form-side">
-    <form [formGroup]="createFacultyForm" (ngSubmit)="actionSave()">
-      <div>
-        <h2>Назва</h2>
-        <input class="" placeholder="Information technoligies" name="name" formControlName="name">
+<div class="section is-main-section">
+
+  <div class="level content-title">
+    <div class="level-left fullwidth-block">
+      <div class="level-item section-layout-header">
+        <div class="title">
+          <span>Новий факультет</span>
+        </div>
       </div>
-      <div>
-        <h2>Скорочена назва</h2>
-        <input class="" value="asdads" placeholder="IT" name = "shortName" formControlName="shortName">
+    </div>
+  </div>
+
+
+  <div class="form-side">
+    <form class="theme-form" [formGroup]="createFacultyForm" (ngSubmit)="actionSave()" autocomplete="off" novalidate>
+
+      <div class="field-wrapper">
+        <div class="field">
+          <label for="Name" class="label">Назва</label>
+          <div class="control">
+            <input type="text" placeholder="Економічна Інформатика" class="input" autocomplete="off"
+                   name="name" id="Name" formControlName="name"
+                   [ngClass]="{
+                          'is-danger': createFacultyForm.touched && createFacultyForm.controls.name.touched && createFacultyForm.controls.name.invalid,
+                          'is-success': createFacultyForm.touched && createFacultyForm.controls.name.touched && !createFacultyForm.controls.name.invalid
+                       }">
+          </div>
+          <form-field-errors [formField]="createFacultyForm.controls.name"></form-field-errors>
+        </div>
+
+        <div class="field">
+          <label for="ShortName" class="label">Скорочена назва</label>
+          <div class="control">
+            <input type="text" placeholder="ЕІ" class="input" autocomplete="off"
+                   name="shortName" id="ShortName" formControlName="shortName"
+                   [ngClass]="{
+                          'is-danger': createFacultyForm.touched && createFacultyForm.controls.shortName.touched && createFacultyForm.controls.shortName.invalid,
+                          'is-success': createFacultyForm.touched && createFacultyForm.controls.shortName.touched && !createFacultyForm.controls.shortName.invalid
+                       }">
+          </div>
+          <form-field-errors [formField]="createFacultyForm.controls.shortName"></form-field-errors>
+        </div>
+
+        <div class="field">
+          <label for="Email" class="label">Email</label>
+          <div class="control">
+            <input type="text" placeholder="e.g. user@gmail.com" class="input" autocomplete="off"
+                   name="email" id="Email" formControlName="email"
+                   [ngClass]="{
+                          'is-danger': createFacultyForm.touched && createFacultyForm.controls.email.touched && createFacultyForm.controls.email.invalid,
+                          'is-success': createFacultyForm.touched && createFacultyForm.controls.email.touched && !createFacultyForm.controls.email.invalid
+                       }">
+          </div>
+          <form-field-errors [formField]="createFacultyForm.controls.email"></form-field-errors>
+        </div>
+
       </div>
-      <div>
-        <h2>Email</h2>
-        <input class="" placeholder="max@gmail.com" name = "email" formControlName="email"><br>
+
+      <div class="control">
+        <button class="button submit-button"
+                [disabled]="(createFacultyForm.touched && createFacultyForm.invalid) || !createFacultyForm.touched"
+                [ngClass]="{'is-loading': createFacultyFormLoading}">Створити
+        </button>
       </div>
-      <button style="margin-top: 15px">Create faculty</button>
+
     </form>
   </div>
+
 </div>

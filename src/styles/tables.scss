@@ -18,8 +18,10 @@
     color: #000000;
   }
   .table-body {
-    padding: 0 12px 12px 0;
     overflow: auto;
+    border: 1px solid #ECECEC;
+    border-radius: 0.84rem;
+    box-shadow: 0 0.2rem 0.675rem rgba(0, 0, 0, 0.05);
   }
   .table-footer {
     padding: 12px 12px 12px 24px;
@@ -28,10 +30,12 @@
 }
 
 .table {
-  box-shadow: 0 0.2rem 0.675rem rgba(0, 0, 0, 0.05);
   margin: 0 !important;
+  overflow: hidden;
+  border-radius: 0.84rem;
   thead {
     tr {
+      padding: 0 1.6rem;
       th {
         font-family: $theme-font-MulishBold;
         font-style: normal;
@@ -39,6 +43,11 @@
         font-size: 16px;
         line-height: 22px;
         color: #8692A6;
+        padding: 1.35rem 0;
+
+        &:first-of-type {
+          padding-left: 1.6rem;
+        }
 
         &.table-options-button {
           cursor: pointer;
@@ -61,8 +70,9 @@
     color: #181819;
     opacity: 0.9;
     height: 48px;
-    padding: 0 8px;
+    padding: 0;
     vertical-align: middle;
+    border-color: #ECECEC;
   }
   td {
     font-family: $theme-font-MulishMedium;
@@ -71,7 +81,21 @@
     font-size: 16px;
     line-height: 150%;
     color: #42505C;
+    padding: 1.35rem 0;
+    border-color: #ECECEC;
   }
+
+  tr {
+    transition: .2s linear;
+
+    td {
+      &:first-of-type {
+        padding-left: 1.6rem;
+        padding-right: 1.6rem;
+      }
+    }
+  }
+
   td.loading {
 
   }
@@ -99,24 +123,33 @@
 
     .dropdown {
       position: absolute;
-      top: 36px;
-      right: 120px;
+      top: 2.5rem;
+      right: 12rem;
 
       .dropdown-content {
         padding: 4px 0;
       }
 
       .dropdown-menu {
-        width: 120px;
+        width: 200px;
         min-width: auto;
+        border: 1px solid #ECECEC;
+        box-shadow: 0px 4px 13px rgba(0, 0, 0, 0.05);
+        border-radius: 8px;
       }
 
       .dropdown-item {
-        padding: 4px 8px;
+        padding: 0.625rem;
         cursor: pointer;
+        font-family: $theme-font-MulishMedium;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 0.83rem;
+        line-height: 1.145rem;
+        color: #42505C;
 
-        .icon {
-          margin: 0 8px 0 0;
+        &:not(:last-of-type) {
+          border-bottom: 1px solid #ECECEC;
         }
       }
     }
@@ -128,6 +161,17 @@
       opacity: 0.25;
       div {
         cursor: not-allowed !important;
+      }
+    }
+  }
+
+  &.is-hoverable {
+    tbody {
+      tr:not(.is-selected){
+        &:hover {
+          background-color: #F1F7FF;
+          transition: .2s linear;
+        }
       }
     }
   }
