@@ -5,9 +5,9 @@ export const SETTINGS_APP = {
   URL_RETURN_KEY: 'returnUrl',
   URL_TOKEN_KEY: 'token',
 
-  URL_HOME_STUDENT: 'app/student/dashboard',
-  URL_HOME_ADMIN: 'app/admin/dashboard/',
-  URL_HOME_SUPER_ADMIN: 'app/super-admin/dashboard/',
+  URL_HOME_STUDENT: 'app/student',
+  URL_HOME_ADMIN: 'app/admin',
+  URL_HOME_SUPER_ADMIN: 'app/super-admin',
 
   // Local Storage Keys
   STORE_DATA_KEYS: {

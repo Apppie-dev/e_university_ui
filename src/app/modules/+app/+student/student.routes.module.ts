@@ -5,10 +5,7 @@ import {PageStudentComponent} from "./page-student/page-student.component";
 const moduleRoutes: Routes = [
   {
     path: '',
-    redirectTo: 'dashboard'
-  }, {
-    path: 'dashboard',
-    component: PageStudentComponent,
+    redirectTo: 'orders'
   }, {
     path: 'documents',
     loadChildren: () => import('./+student-documents/student-documents.module').then(m => m.StudentDocumentsModule)

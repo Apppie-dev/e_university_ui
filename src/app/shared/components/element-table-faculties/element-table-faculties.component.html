@@ -69,13 +69,13 @@
       </ng-container>
 
     </ng-container>
-
-    <ng-container *ngIf="!loading && error">
-      <div class="error-wrapper">
-        <div class="error">Виникла помилка. Будь ласка, зв'яжіться з підтримкою</div>
-        <button class="action-button" (click)="handleReload()">Спробувати ще раз</button>
-      </div>
-    </ng-container>
   </div>
+
+  <ng-container *ngIf="!loading && error">
+    <div class="error-wrapper">
+      <div class="error">Виникла помилка. Будь ласка, зв'яжіться з підтримкою</div>
+      <button class="action-button" (click)="handleReload()">Спробувати ще раз</button>
+    </div>
+  </ng-container>
 </div>
 

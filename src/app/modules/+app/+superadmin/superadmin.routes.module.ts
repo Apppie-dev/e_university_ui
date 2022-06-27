@@ -5,11 +5,7 @@ import {PageSuperAdminComponent} from "./page-superadmin/page-superadmin.compone
 const moduleRoutes: Routes = [
   {
     path: '',
-    redirectTo: 'dashboard'
-  },
-  {
-    path: 'dashboard',
-    component: PageSuperAdminComponent
+    redirectTo: 'users'
   },
   {
     path: 'faculties',

@@ -15,7 +15,6 @@
             <tr>
               <th>ID</th>
               <th>Факультет</th>
-              <th>ПІБ студента</th>
               <th>Стан користувача</th>
               <th>Электронна пошта</th>
               <th>Логiн</th>
@@ -28,7 +27,6 @@
             <tr *ngFor="let userItem of data; let userIndex = index">
               <td>{{ userItem.user_id }}</td>
               <td>{{ userItem.faculties[0].faculty_name }}</td>
-              <td>{{ userItem.name || 'n/a' }}</td>
               <td>{{ userItem.is_active ? 'Активний' : 'Неактивний'}}</td>
               <td>{{ userItem.email}}</td>
               <td>{{ userItem.login}}</td>
@@ -63,13 +61,13 @@
       </ng-container>
 
     </ng-container>
-
-    <ng-container *ngIf="!loading && error">
-      <div class="error-wrapper">
-        <div class="error">Виникла помилка. Будь ласка, зв'яжіться з підтримкою</div>
-        <button class="action-button" (click)="handleReload()">Спробувати ще раз</button>
-      </div>
-    </ng-container>
   </div>
+
+  <ng-container *ngIf="!loading && error">
+    <div class="error-wrapper">
+      <div class="error">Виникла помилка. Будь ласка, зв'яжіться з підтримкою</div>
+      <button class="action-button" (click)="handleReload()">Спробувати ще раз</button>
+    </div>
+  </ng-container>
 </div>
 
