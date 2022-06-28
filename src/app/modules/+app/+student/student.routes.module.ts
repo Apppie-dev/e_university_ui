@@ -5,8 +5,11 @@ import {PageStudentComponent} from "./page-student/page-student.component";
 const moduleRoutes: Routes = [
   {
     path: '',
-    redirectTo: 'orders'
+    redirectTo: 'settlement-hostel'
   }, {
+    path: 'settlement-hostel',
+    loadChildren: () => import('./+student-hostel-request/student-hostel-request.module').then(m => m.StudentHostelRequestModule)
+  },  {
     path: 'documents',
     loadChildren: () => import('./+student-documents/student-documents.module').then(m => m.StudentDocumentsModule)
   }, {

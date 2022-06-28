@@ -79,6 +79,7 @@ export class PageRegistrationComponent implements OnInit {
 
     this.usersService.registrationUser(body)
       .subscribe((data: any) => {
+        this.router.navigate([SETTINGS_APP.URL_LOGIN]);
 
         this.formRegistrationLoading = false;
       }, (error: any) => {
