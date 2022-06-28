@@ -1,0 +1,44 @@
+@import '~src/styles/variables';
+
+.page-not-found-wrapper {
+  background: url('~src/assets/img/page-not-found-404-bg.png') no-repeat 0 0 transparent;
+}
+
+.page-not-found-content-wrapper {
+}
+
+.page-not-found-title {
+  font-family: $theme-font-MulishBlack;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 40px;
+  line-height: 110%;
+  color: #FFFFFF;
+
+}
+
+.page-not-found-404 {
+  margin-top: 64px;
+}
+
+.page-not-found-link {
+  margin-top: 60px;
+
+  .button {
+    padding: 22px 62px;
+    width: 322px;
+    height: 64px;
+    border: 2px solid #FFFFFF;
+    border-radius: 12px;
+    color: #FFFFFF;
+    font-family: $theme-font-MulishBold;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px;
+    text-align: center;
+    background-color: transparent;
+  }
+}
+
+
