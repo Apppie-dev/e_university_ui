@@ -45,10 +45,4 @@ export class ElementTableFacultiesComponent {
     event.preventDefault();
     event.stopPropagation();
   }
-
-  handleDownload(event: Event): void {
-    event.stopPropagation();
-    event.preventDefault();
-    this.uiNotifierService.showInfo('This Action is not implemented.');
-  }
 }

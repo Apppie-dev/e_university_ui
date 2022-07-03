@@ -102,6 +102,38 @@
   td.cell-bold {
     font-weight: 500;
   }
+  td.cell-state-tag {
+    span {
+      padding: 0.4rem 1.25rem;
+      height: 1.55rem;
+      border-radius: 0.4rem;
+
+      font-family: $theme-font-MulishRegular;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 0.73rem;
+      line-height: 1.1rem;
+    }
+
+    &.under-consideration {
+      span {
+        background: rgba(21, 101, 216, 0.22);;
+        color: #1565D8;
+      }
+    }
+    &.approved {
+      span {
+        color: #01AD31;
+        background: #C9F5D6;
+      }
+    }
+    &.rejected {
+      span {
+        color: #CA0000;
+        background: #F6B8AD;
+      }
+    }
+  }
   td.no-data {
     text-align: center;
     height: auto;

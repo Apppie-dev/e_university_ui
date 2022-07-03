@@ -7,21 +7,6 @@
       </ng-container>
 
       <ng-container *ngIf="!loading && !error && data">
-
-        <ng-container *ngIf="data.length === 0">
-          <div class="source-ips-state-empty-container">
-            <p class="source-ips-state-empty-title">
-              No source ips added yet
-            </p>
-            <a class="action-button" routerLink="/app/help/attacks-types">
-              Help Page
-            </a>
-            <p  class="source-ips-state-empty-subtitle">
-              Etiam vel sollicitudin sapien, ut tempor ex. Integer sagittis diam bibendum dolor posuere mattis.
-            </p>
-          </div>
-        </ng-container>
-
         <ng-container *ngIf="data.length > 0">
 
           <table class="table is-fullwidth is-hoverable">

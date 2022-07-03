@@ -9,3 +9,4 @@ export { AuthenticationService } from './http/authentication.service';
 export { FacultyService } from './http/faculty.service';
 export { OrdersService } from './http/orders.service';
 export { UsersService } from './http/users.service'
+export { RequestService } from './http/request.service';

@@ -11,4 +11,18 @@
   </div>
 
 
+  <div class="level-requests">
+    <div class="level-requests-content">
+
+      <element-table-student-requests
+        [loading]="dataLoading"
+        [error]="dataError"
+        [data]="data"
+        [link]="false"
+        [loadingAmount]="13"
+        (notifyReload)="loadData()"
+      ></element-table-student-requests>
+
+    </div>
+  </div>
 </div>

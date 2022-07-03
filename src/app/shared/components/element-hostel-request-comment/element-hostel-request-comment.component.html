@@ -1,0 +1,33 @@
+
+
+<div class="form-side">
+  <form class="theme-form" [formGroup]="formComment" (ngSubmit)="actionSave()" autocomplete="off" novalidate>
+
+    <div class="field-wrapper">
+      <div class="field">
+        <div class="control">
+          <textarea
+            class="textarea"
+            name="comment"
+            placeholder="Маю пільгу на поселення  або побажання щодо поселення"
+            autocomplete="off"
+            formControlName="comment"
+            [ngClass]="{
+                          'is-danger': formComment.touched && formComment.controls.comment.touched && formComment.controls.comment.invalid,
+                          'is-success': formComment.touched && formComment.controls.comment.touched && !formComment.controls.comment.invalid
+                       }"
+          ></textarea>
+        </div>
+        <form-field-errors [formField]="formComment.controls.comment"></form-field-errors>
+      </div>
+    </div>
+
+    <div class="control">
+      <button class="button submit-button"
+              [disabled]="(formComment.touched && formComment.invalid) || !formComment.touched"
+              [ngClass]="{'is-loading': formCommentLoading}">Відправити
+      </button>
+    </div>
+
+  </form>
+</div>

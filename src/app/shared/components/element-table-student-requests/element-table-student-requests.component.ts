@@ -1,23 +1,25 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {UserModel} from "@app/models";
 import {UiNotifierService} from "@app/services";
+import {RequestModel, RequestStatusModel} from "@app/shared/models/request.model";
 
 @Component({
-  selector: 'element-table-users',
-  templateUrl: './element-table-users.component.html',
-  styleUrls: ['./element-table-users.component.css']
+  selector: 'element-table-student-requests',
+  templateUrl: './element-table-student-requests.component.html',
+  styleUrls: ['./element-table-student-requests.component.css']
 })
-export class ElementTableUsersComponent {
+export class ElementTableStudentRequestsComponent {
 
   @Input() loading = true;
   @Input() error = false;
 
-  @Input() data: UserModel[];
+  @Input() data: RequestModel[];
   @Input() link = true;
   @Input() incidentId: string;
   @Input() loadingAmount = 4;
 
   @Output() notifyReload: EventEmitter<any> = new EventEmitter<any>();
+
+  REQUEST_STATES = RequestStatusModel;
 
   constructor(
     private uiNotifierService: UiNotifierService,
@@ -27,19 +29,19 @@ export class ElementTableUsersComponent {
     this.notifyReload.emit();
   }
 
-  handleCellMenuToggle(event: Event, facultyIndex: number): void {
-    const visibilityMenu = !this.data[facultyIndex].visibilityMenu;
+  handleCellMenuToggle(event: Event, requestIndex: number): void {
+    const visibilityMenu = !this.data[requestIndex].visibilityMenu;
     this.handleCellMenuClickOutside(event);
-    this.data[facultyIndex].visibilityMenu = visibilityMenu;
+    this.data[requestIndex].visibilityMenu = visibilityMenu;
 
     event.preventDefault();
     event.stopPropagation();
   }
 
   handleCellMenuClickOutside(event: Event): void {
-    this.data = this.data.map((faculty: UserModel) => {
-      faculty.visibilityMenu = false;
-      return faculty;
+    this.data = this.data.map((request: RequestModel) => {
+      request.visibilityMenu = false;
+      return request;
     });
 
     event.preventDefault();

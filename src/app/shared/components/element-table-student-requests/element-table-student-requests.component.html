@@ -1,0 +1,80 @@
+<div class="table-wrapper">
+  <div class="table-body">
+    <ng-container *ngIf="!error">
+
+      <ng-container *ngIf="loading">
+        Loading...
+      </ng-container>
+
+      <ng-container *ngIf="!loading && !error && data">
+
+        <ng-container *ngIf="data.length > 0">
+
+          <table class="table is-fullwidth is-hoverable">
+            <thead>
+            <tr>
+              <th>Номер заяви</th>
+              <th>Дата створення</th>
+              <th>Тип заяви</th>
+              <th>Статус</th>
+              <th>Додатково</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let requestItem of data; let requestIndex = index">
+              <td>{{ requestItem.user_request_id }}</td>
+              <td>{{ requestItem.date_created }}</td>
+              <td>{{ requestItem.service_name || 'n/a' }}</td>
+              <td
+                class="cell-state-tag"
+                [ngClass]="{
+                'rejected': requestItem.status_name === REQUEST_STATES.Rejected,
+                'under-consideration': requestItem.status_name === REQUEST_STATES.UnderConsideration,
+                'approved': requestItem.status_name === REQUEST_STATES.Approved
+                }"
+              ><span>{{ requestItem.status_name || 'n/a' }}</span></td>
+              <td width="10%" class="cell-menu" [ngClass]="{'cell-menu-active': requestItem.visibilityMenu}">
+                <ng-container>
+                  <div class="cell-menu-area" (click)="handleCellMenuToggle($event, requestIndex)" appClickOutside (clickOutside)="handleCellMenuClickOutside($event)">
+                    <svg width="4" height="18" viewBox="0 0 4 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <circle cx="2" cy="2" r="2" fill="#42505C"/>
+                      <circle cx="2" cy="9" r="2" fill="#42505C"/>
+                      <circle cx="2" cy="16" r="2" fill="#42505C"/>
+                    </svg>
+                    <div class="dropdown" [ngClass]="{'is-active': requestItem.visibilityMenu}">
+                      <div class="dropdown-menu" id="dropdown-menu" role="menu">
+                        <div class="dropdown-content">
+                              <span class="dropdown-item">
+                                <span class="dropdown-item-title">Скасувати заяву</span>
+                              </span>
+                              <span class="dropdown-item">
+                                <span class="dropdown-item-title">Редагувати заяву</span>
+                              </span>
+                              <span class="dropdown-item">
+                                <span class="dropdown-item-title">Подивитися деталі</span>
+                              </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </ng-container>
+              </td>
+
+            </tr>
+            </tbody>
+          </table>
+
+        </ng-container>
+      </ng-container>
+
+    </ng-container>
+  </div>
+
+  <ng-container *ngIf="!loading && error">
+    <div class="error-wrapper">
+      <div class="error">Виникла помилка. Будь ласка, зв'яжіться з підтримкою</div>
+      <button class="action-button" (click)="handleReload()">Спробувати ще раз</button>
+    </div>
+  </ng-container>
+</div>
+

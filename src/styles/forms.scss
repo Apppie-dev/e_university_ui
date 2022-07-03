@@ -35,6 +35,20 @@ form {
         border-color: #1565D8;
       }
     }
+    textarea {
+      font-family: $theme-font-MulishMedium;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 0.7291rem;
+      line-height: 0.9374rem;
+      color: #8692A6;
+      border-radius: 0.625rem;
+      text-indent: 0.25rem;
+
+      &:focus {
+        border-color: #1565D8;
+      }
+    }
 
     .password-field-eye {
       cursor: pointer;
