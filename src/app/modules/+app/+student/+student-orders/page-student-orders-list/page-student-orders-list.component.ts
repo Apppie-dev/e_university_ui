@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthenticationService, ErrorLoggerService, RequestService} from "@app/services";
 import {takeUntil} from "rxjs/operators";
-import {RequestModel, UserModel} from "@app/models";
+import {HostelRequestModel, UserModel} from "@app/models";
 import {Subject} from "rxjs";
 import * as moment from "moment";
 
@@ -12,7 +12,7 @@ import * as moment from "moment";
 })
 export class PageStudentOrdersListComponent implements OnInit {
 
-  data!: RequestModel[];
+  data!: HostelRequestModel[];
   dataError = true;
   dataLoading = false;
 
@@ -45,10 +45,10 @@ export class PageStudentOrdersListComponent implements OnInit {
 
     this.requestService.getRequests(this.dataUser.university_id)
       .pipe(takeUntil(this.unsubscribeRequest$))
-      .subscribe((requests: RequestModel[]) => {
+      .subscribe((requests: HostelRequestModel[]) => {
         this.data = requests;
 
-        this.data = this.data.map((request: RequestModel) => {
+        this.data = this.data.map((request: HostelRequestModel) => {
           request.date_created = moment(request.date_created).format('DD.MM.YYYY');
           return request;
         })

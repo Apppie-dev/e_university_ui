@@ -64,7 +64,6 @@ export class PageAdminFacultiesCreateComponent implements OnInit {
     this.facultyService.createFaculty(this.dataUser.university_id, body)
       .pipe(takeUntil(this.unsubscribeRequest))
       .subscribe((data: FacultyModel) => {
-        console.log(data);
       }, (error) => {
         console.log(error);
       })

@@ -127,6 +127,12 @@
         background: #C9F5D6;
       }
     }
+    &.canceled {
+      span {
+        color: #fff;
+        background: #73605B;
+      }
+    }
     &.rejected {
       span {
         color: #CA0000;

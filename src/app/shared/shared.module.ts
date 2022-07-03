@@ -6,19 +6,14 @@ import {
   CorePaginationComponent,
   CoreSidebarComponent,
   CoreUserMenuComponent,
-  ElementHostelRequestFormComponent,
   ElementTableStudentRequestsComponent,
   ElementTableFacultiesComponent,
   ElementTableUsersComponent,
   ElementUniversityLogoComponent,
-
   FormFieldErrorsComponent,
 } from './components';
 import { AppClickOutsideDirective, AppRolesDirective} from './directive';
 import {AppPasswordInputDirective} from "@app/shared/directive/app-password-input.directive";
-import {
-  ElementHostelRequestCommentComponent
-} from "@app/shared/components/element-hostel-request-comment/element-hostel-request-comment.component";
 
 
 @NgModule({
@@ -42,9 +37,6 @@ import {
     ElementTableUsersComponent,
     ElementTableStudentRequestsComponent,
 
-    ElementHostelRequestCommentComponent,
-    ElementHostelRequestFormComponent,
-
     FormFieldErrorsComponent,
   ],
   exports: [
@@ -63,9 +55,6 @@ import {
     ElementUniversityLogoComponent,
     ElementTableUsersComponent,
     ElementTableStudentRequestsComponent,
-
-    ElementHostelRequestCommentComponent,
-    ElementHostelRequestFormComponent,
 
     FormFieldErrorsComponent,
   ],

@@ -28,11 +28,12 @@
               <td
                 class="cell-state-tag"
                 [ngClass]="{
-                'rejected': requestItem.status_name === REQUEST_STATES.Rejected,
-                'under-consideration': requestItem.status_name === REQUEST_STATES.UnderConsideration,
-                'approved': requestItem.status_name === REQUEST_STATES.Approved
+                'rejected': requestItem.status.status_id === REQUEST_STATES.Rejected,
+                'under-consideration': requestItem.status.status_id === REQUEST_STATES.UnderConsideration,
+                'approved': requestItem.status.status_id === REQUEST_STATES.Approved,
+                'canceled': requestItem.status.status_id === REQUEST_STATES.Canceled
                 }"
-              ><span>{{ requestItem.status_name || 'n/a' }}</span></td>
+              ><span>{{ requestItem.status.status_name || 'n/a' }}</span></td>
               <td width="10%" class="cell-menu" [ngClass]="{'cell-menu-active': requestItem.visibilityMenu}">
                 <ng-container>
                   <div class="cell-menu-area" (click)="handleCellMenuToggle($event, requestIndex)" appClickOutside (clickOutside)="handleCellMenuClickOutside($event)">

@@ -1,0 +1,18 @@
+.request-container {
+  & > div {
+    &:first-of-type {
+      flex: 1;
+      margin-right: 3rem;
+    }
+
+    &:last-of-type {
+      flex: 0.75;
+    }
+  }
+}
+
+.control {
+  button.submit-button {
+    width: 10rem;
+  }
+}

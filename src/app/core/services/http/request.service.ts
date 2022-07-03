@@ -2,7 +2,7 @@ import {HttpClient} from "@angular/common/http";
 import {environment} from "@app/environment/environment";
 import {Injectable} from "@angular/core";
 import {Observable} from "rxjs";
-import {RequestModel} from "@app/shared/models/request.model";
+import {HostelRequestModel} from "@app/shared/models/request.model";
 
 
 @Injectable({
@@ -16,15 +16,25 @@ export class RequestService {
 
   private backendUrl = `${environment.backendUrl}`;
 
-  getHostelRequestInfo(universityId: number): Observable<any> {
+  getHostelRequestExistence(universityId: number): Observable<any> {
     const url = `${this.backendUrl}${universityId}/user-request-existence/${1}`;
     // todo:: 1 - hostel request hardcode
 
     return this.http.get<any>(url)
   }
 
-  getRequests(universityId: number): Observable<RequestModel[]> {
+  getRequests(universityId: number): Observable<HostelRequestModel[]> {
     const url = `${this.backendUrl}${universityId}/user-request/`;
-    return this.http.get<RequestModel[]>(url)
+    return this.http.get<HostelRequestModel[]>(url)
+  }
+
+  getHostelRequestBookingInfo(universityId: number): Observable<HostelRequestModel> {
+    const url = `${this.backendUrl}${universityId}/user-request-booking-hostel/`;
+    return this.http.get<HostelRequestModel>(url)
+  }
+
+  createHostelRequest(universityId: number, body: any): Observable<HostelRequestModel> {
+    const url = `${this.backendUrl}${universityId}/user-request/`;
+    return this.http.post<HostelRequestModel>(url, body)
   }
 }

@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {UiNotifierService} from "@app/services";
-import {RequestModel, RequestStatusModel} from "@app/shared/models/request.model";
+import {HostelRequestModel, RequestStatusIDModel} from "@app/shared/models/request.model";
 
 @Component({
   selector: 'element-table-student-requests',
@@ -12,14 +12,14 @@ export class ElementTableStudentRequestsComponent {
   @Input() loading = true;
   @Input() error = false;
 
-  @Input() data: RequestModel[];
+  @Input() data: HostelRequestModel[];
   @Input() link = true;
   @Input() incidentId: string;
   @Input() loadingAmount = 4;
 
   @Output() notifyReload: EventEmitter<any> = new EventEmitter<any>();
 
-  REQUEST_STATES = RequestStatusModel;
+  REQUEST_STATES = RequestStatusIDModel;
 
   constructor(
     private uiNotifierService: UiNotifierService,
@@ -39,7 +39,7 @@ export class ElementTableStudentRequestsComponent {
   }
 
   handleCellMenuClickOutside(event: Event): void {
-    this.data = this.data.map((request: RequestModel) => {
+    this.data = this.data.map((request: HostelRequestModel) => {
       request.visibilityMenu = false;
       return request;
     });

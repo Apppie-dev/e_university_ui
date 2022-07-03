@@ -10,12 +10,83 @@
     </div>
   </div>
 
-    <element-hostel-request-comment
-      *ngIf="activeTab === TABS_LIST.Comment"
-    ></element-hostel-request-comment>
+    <div class="is-flex is-align-content-space-between request-container" *ngIf="!hostelRequestExist && !hostelRequestInfoLoading && hostelRequestInfoData">
 
-    <element-hostel-request-form
-      *ngIf="activeTab === TABS_LIST.RequestForm"
-    ></element-hostel-request-form>
+      <div class="box">
+        <div class="request-hostel-booking">
+          <div class="request-header">
+            Ректорові {{ hostelRequestInfoData.short_university_name }} <br>
+            {{ rectorFullNameInDative }} <br>
+            студент (ки) "{{ hostelRequestInfoData.faculty_name }}" <br>
+            {{ hostelRequestInfoData.course }} курсу {{ hostelRequestInfoData.educ_level === STUDENT_EDUCATION_LEVELS.B? 'першого (бакалаврського)' : 'другого (магістерського)' }} рівня
+            <br> вищої освіти
+            за спеціальністю {{ hostelRequestInfoData.speciality_code }} <br>
+            "{{ hostelRequestInfoData.speciality_name }}" <br>
+            {{ studentFullNameInGenitive }} <br>
+          </div>
+          <div class="request-body">
+            <div class="request-body-title">
+              Заява
+            </div>
+            <div class="request-body-content">
+              <div>
+                Прошу поселити мене на {{ hostelRequestInfoData.start_year }}/{{ hostelRequestInfoData.finish_year }} навчальний рік у гуртожиток
+                {{ hostelRequestInfoData.short_university_name }}.
+              </div>
+              <div>
+                Зобов'язуюсь дотримуватись умов проживання за договором про проживання та виконувати правила внутрішнього розпорядку {{ hostelRequestInfoData.short_university_name }} та положень про гуртожиток.
+              </div>
+              <div>
+                Кошти за проживання у гуртожитку зобов'язуюсь сплачувати у строки, встановлені в договорі найму жилої площі в гуртожитку.
+              </div>
+            </div>
+          </div>
+          <div class="request-footer">
+            <div><br> {{ hostelRequestInfoData.date_today }}</div>
+            <div>
+            <span>
+              <hr>
+              <span>Пiдпис</span>
+            </span>
+              <span>
+              {{ hostelRequestInfoData.full_name }}
+            </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="form-side is-1">
+        <form class="theme-form" [formGroup]="hostelRequestFormComment" autocomplete="off" novalidate>
+
+          <div class="field-wrapper">
+            <div class="field">
+              <div class="control">
+          <textarea
+            class="textarea"
+            name="comment"
+            placeholder="Маю пільгу на поселення  або побажання щодо поселення"
+            autocomplete="off"
+            formControlName="comment"
+            [ngClass]="{
+                          'is-danger': hostelRequestFormComment.touched && hostelRequestFormComment.controls.comment.touched && hostelRequestFormComment.controls.comment.invalid,
+                          'is-success': hostelRequestFormComment.touched && hostelRequestFormComment.controls.comment.touched && !hostelRequestFormComment.controls.comment.invalid
+                       }"
+            (paste)="hostelRequestFormComment.valid ? this.hostelRequestFormComment.markAsTouched() : null"
+            (input)="hostelRequestFormComment.valid ? this.hostelRequestFormComment.markAsTouched() : null"
+          ></textarea>
+              </div>
+              <form-field-errors [formField]="hostelRequestFormComment.controls.comment"></form-field-errors>
+            </div>
+          </div>
+        </form>
+
+        <div class="control">
+          <button class="button submit-button" (click)="actionSave()">Відправити Заяву</button>
+        </div>
+      </div>
+
+    </div>
 
 </div>

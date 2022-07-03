@@ -1,0 +1,72 @@
+@import '~src/styles/variables';
+
+.request-hostel-booking {
+  padding: 2.3rem;
+  font-family: $theme-font-MulishMedium;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 0.83rem;
+  line-height: 1rem;
+  color: #42505C;
+
+  .request-header {
+    margin-left: auto;
+    width: 17rem;
+  }
+  .request-body {
+    margin-top: 9rem;
+
+    .request-body-title {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .request-body-content {
+      width: 30rem;
+      margin: 0 auto;
+      div {
+        text-indent: 3rem;
+      }
+    }
+  }
+  .request-footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 3.1rem;
+
+    & > div {
+      &:first-of-type {
+        text-align: center;
+      }
+      &:last-of-type {
+        display: flex;
+        align-items: center;
+
+        & > span {
+
+          &:first-of-type {
+            position: relative;
+            hr {
+              margin-right: 0.5rem;
+              background:#42505C;
+              width: 4rem;
+              height: 0.05rem;
+            }
+            span {
+              position: absolute;
+              font-size: 0.5rem;
+              line-height: 0.6rem;
+              top: 2rem;
+              left: 1.2rem;
+            }
+          }
+
+          &:last-of-type {
+            position: relative;
+            bottom: 0.25rem;
+          }
+        }
+      }
+    }
+  }
+}

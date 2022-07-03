@@ -7,8 +7,5 @@ export { ElementTableFacultiesComponent } from './element-table-faculties/elemen
 export { ElementTableUsersComponent } from './element-table-users/element-table-users.component';
 export { ElementTableStudentRequestsComponent } from './element-table-student-requests/element-table-student-requests.component';
 
-export { ElementHostelRequestCommentComponent } from './element-hostel-request-comment/element-hostel-request-comment.component';
-export { ElementHostelRequestFormComponent } from './element-hostel-request-form/element-hostel-request-form.component';
-
 export { FormFieldErrorsComponent } from './form-field-errors/form-field-errors.component';
 
