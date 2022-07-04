@@ -5,7 +5,7 @@ import {HostelRequestModel, RequestStatusIDModel} from "@app/shared/models/reque
 @Component({
   selector: 'element-table-student-requests',
   templateUrl: './element-table-student-requests.component.html',
-  styleUrls: ['./element-table-student-requests.component.css']
+  styleUrls: ['./element-table-student-requests.component.scss']
 })
 export class ElementTableStudentRequestsComponent {
 

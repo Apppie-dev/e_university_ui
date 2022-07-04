@@ -1,0 +1,49 @@
+<div class="table-wrapper">
+  <div class="table-body">
+    <ng-container *ngIf="!error">
+
+      <ng-container *ngIf="loading">
+        Loading...
+      </ng-container>
+
+      <ng-container *ngIf="!loading && !error && data">
+
+        <ng-container *ngIf="data.length > 0">
+
+          <table class="table is-fullwidth is-hoverable">
+            <thead>
+            <tr>
+              <th>Номер гуртожитку</th>
+              <th>Назва гуртожитку</th>
+              <th>Мiсто</th>
+              <th>Вулиця</th>
+              <th>№ Будiвлi</th>
+              <th>Комендант</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let hostelItem of data;">
+              <td>{{ hostelItem.number }}</td>
+              <td>{{ hostelItem.name }}</td>
+              <td>{{ hostelItem.city }}</td>
+              <td>{{ hostelItem.street }}</td>
+              <td>{{ hostelItem.build }}</td>
+              <td>{{ hostelItem.commandant_full_name }}</td>
+            </tr>
+            </tbody>
+          </table>
+
+        </ng-container>
+      </ng-container>
+
+    </ng-container>
+  </div>
+
+  <ng-container *ngIf="!loading && error">
+    <div class="error-wrapper">
+      <div class="error">Виникла помилка. Будь ласка, зв'яжіться з підтримкою</div>
+      <button class="action-button" (click)="handleReload()">Спробувати ще раз</button>
+    </div>
+  </ng-container>
+</div>
+

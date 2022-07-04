@@ -9,4 +9,56 @@
       </div>
     </div>
   </div>
+
+  <ng-template [ngIf]="requestStatus === REQUEST_STATUSES.UnderConsideration">
+    <div class="status-info">
+      <div class="status-info-row">
+        <div class="status-info-left-col">
+          <div class="status-info-col-header">Cтатус</div>
+        </div>
+        <div class="status-info-right-col">
+          <div class="status-info-col-state green">Ваша заява прийнята до розгляду</div>
+          <div class="status-info-col-text">
+            Адреса гуртожитку: м. Харків, вул. Цілиноградська, б. 40
+            Ваша кімната: 317
+            Кiлькiсть ліжко-місць: 1
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+
+  <ng-template [ngIf]="requestStatus === REQUEST_STATUSES.Approved">
+    <div class="status-info">
+      <div class="status-info-row">
+        <div class="status-info-left-col">
+          <div class="status-info-col-header">Cтатус</div>
+        </div>
+        <div class="status-info-right-col">
+          <div class="status-info-col-state green">Вас рекомендовано до поселення в гуртожиток "Назва гуртожитку"
+          </div>
+          <div class="status-info-col-text">
+            <b>Адреса гуртожитку:</b> м. Харків, вул. Цілиноградська, б. 40
+            <b>Ваша кімната:</b> 317
+            <b>Кiлькiсть ліжко-місць:</b> 1
+          </div>
+        </div>
+      </div>
+      <div class="status-info-row">
+        <div class="status-info-left-col">
+          <div class="status-info-col-header">Оплата</div>
+        </div>
+        <div class="status-info-right-col">
+          <div class="status-info-col-state red">
+            Будь ласка, підтвердіть оплату за проживання у гуртожитку
+          </div>
+          <div class="status-info-col-text">
+            <b>Вартість проживання у гуртожитку</b> складає 800 грн/місяць <br>
+            Потрібно сплатити за 4 місяців проживання <br>
+            <b>Сума за проживання складає:</b> 800 грн/мес * 4 мес * 1 ліжко-місце = 3200 грн <br>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-template>
 </div>

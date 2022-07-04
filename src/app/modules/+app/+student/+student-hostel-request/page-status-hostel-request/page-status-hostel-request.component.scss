@@ -1,0 +1,50 @@
+@import '~src/styles/variables';
+
+.status-info {
+  display: flex;
+  flex-direction: column;
+
+  .status-info-row {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 3.3rem;
+
+    .status-info-left-col {
+
+      .status-info-col-header {
+        font-family: $theme-font-MulishMedium;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 1rem;
+        line-height: 120%;
+        text-transform: uppercase;
+        color: #8692A6;
+      }
+    }
+    .status-info-right-col {
+      width: 40rem;
+      margin-left: 3.3rem;
+
+      .status-info-col-state {
+        width: 23rem;
+        font-family: $theme-font-MulishBold;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 0.9rem;
+        line-height: 1.1rem;
+
+        &.green {
+          color: #01AD31;
+        }
+
+        &.red {
+          color: #CA0000;
+        }
+      }
+
+      .status-info-col-text {
+        margin-top: 1.25rem;
+      }
+    }
+  }
+}

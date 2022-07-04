@@ -1,0 +1,29 @@
+<div class="section is-main-section">
+
+  <div class="level content-title">
+    <div class="level-left fullwidth-block">
+      <div class="level-item section-layout-header">
+        <div class="title">
+          <span>Список гуртожиткiв</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="level-hostels">
+    <div class="level-hostels-content">
+
+      <element-table-admin-hostels
+        [loading]="dataLoading"
+        [error]="dataError"
+        [data]="data"
+        [link]="false"
+        [loadingAmount]="13"
+        (notifyReload)="loadData()"
+      ></element-table-admin-hostels>
+
+
+    </div>
+  </div>
+</div>

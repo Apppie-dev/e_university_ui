@@ -10,7 +10,7 @@ import {
   ElementTableFacultiesComponent,
   ElementTableUsersComponent,
   ElementUniversityLogoComponent,
-  FormFieldErrorsComponent,
+  FormFieldErrorsComponent, ElementTableAdminHostelsComponent,
 } from './components';
 import { AppClickOutsideDirective, AppRolesDirective} from './directive';
 import {AppPasswordInputDirective} from "@app/shared/directive/app-password-input.directive";
@@ -36,6 +36,7 @@ import {AppPasswordInputDirective} from "@app/shared/directive/app-password-inpu
     ElementUniversityLogoComponent,
     ElementTableUsersComponent,
     ElementTableStudentRequestsComponent,
+    ElementTableAdminHostelsComponent,
 
     FormFieldErrorsComponent,
   ],
@@ -55,6 +56,7 @@ import {AppPasswordInputDirective} from "@app/shared/directive/app-password-inpu
     ElementUniversityLogoComponent,
     ElementTableUsersComponent,
     ElementTableStudentRequestsComponent,
+    ElementTableAdminHostelsComponent,
 
     FormFieldErrorsComponent,
   ],

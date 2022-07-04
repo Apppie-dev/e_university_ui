@@ -12,7 +12,7 @@ import {Subject} from "rxjs";
   styleUrls: ['./page-admin-faculties-create.component.scss']
 })
 
-export class PageAdminFacultiesCreateComponent implements OnInit {
+export class PageSuperAdminFacultiesCreateComponent implements OnInit {
 
   dataUser: UserModel | null = null;
 

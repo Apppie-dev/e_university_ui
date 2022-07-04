@@ -1,16 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {PageAdminComponent} from "./page-admin/page-admin.component";
 
 const moduleRoutes: Routes = [
   {
     path: '',
-    redirectTo: 'dashboard'
+    redirectTo: 'hostels'
   },
   {
-    path: 'dashboard',
-    component: PageAdminComponent,
-  }
+    path: 'hostels',
+    loadChildren: () => import('./+admin-hostels/admin-hostels.module').then(m => m.AdminHostelsModule)
+  },
 ];
 
 @NgModule({
