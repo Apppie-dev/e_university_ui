@@ -2,10 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {AuthenticationService, PageMetaService} from "@app/services";
 import {ActivatedRoute, Router} from "@angular/router";
-import {PageMetaModel, UserModel} from "@app/models";
-import {HttpErrorResponse} from "@angular/common/http";
+import {PageMetaModel} from "@app/models";
 import {SETTINGS_APP} from "@app/constants";
-import {UsersService} from "../../../core/services/http/users.service";
+import {UsersService} from "@app/services";
 
 @Component({
   selector: 'page-registration',

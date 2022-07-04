@@ -1,0 +1,52 @@
+<div class="file">
+
+  <div class="file-icon">
+    <element-file-icon></element-file-icon>
+  </div>
+
+  <div class="file-footer">
+    <div class="ame">
+      Заява на поселення
+    </div>
+    <div class="date">
+      02.08.2022
+    </div>
+  </div>
+
+  <div class="file-hover-layout">
+    <ng-container>
+      <div class="menu">
+        <div class="toggle-menu-icon" (click)="handleCellMenuToggle($event)" appClickOutside (clickOutside)="handleCellMenuClickOutside($event)">
+          <svg viewBox="0 0 4 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="2" cy="2" r="2" fill="white"/>
+            <circle cx="2" cy="9" r="2" fill="white"/>
+            <circle cx="2" cy="16" r="2" fill="white"/>
+          </svg>
+        </div>
+        <div class="menu-area">
+
+          <div class="dropdown" [ngClass]="{'is-active': file.visibilityMenu}">
+            <div class="dropdown-menu" id="dropdown-menu" role="menu">
+              <div class="dropdown-content">
+                              <span class="dropdown-item" (click)="actionNotifyView()">
+                                <span class="dropdown-item-title">Переглянути документ</span>
+                              </span>
+                <span class="dropdown-item" (click)="actionNotifyDownload()">
+                                <span class="dropdown-item-title">Завантажити документ</span>
+                              </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+    <div class="download-icon" (click)="actionNotifyDownload()">
+      <svg viewBox="0 0 58 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M31.8327 20.3333H45.9994L28.9994 37.3333L11.9993 20.3333H26.166V0.5H31.8327V20.3333ZM6.33268 45.8333H51.666V26H57.3327V48.6667C57.3327 49.4181 57.0342 50.1388 56.5028 50.6701C55.9715 51.2015 55.2508 51.5 54.4994 51.5H3.49935C2.7479 51.5 2.02723 51.2015 1.49588 50.6701C0.964527 50.1388 0.666016 49.4181 0.666016 48.6667V26H6.33268V45.8333Z" fill="white"/>
+      </svg>
+    </div>
+    <div class="size">
+      114 КБ
+    </div>
+  </div>
+</div>

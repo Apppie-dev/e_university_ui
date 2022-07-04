@@ -3,8 +3,6 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {PageMetaModel} from "@app/models";
 import {AuthenticationService, PageMetaService, UiNotifierService} from "@app/services";
-import {Observable} from "rxjs";
-import { UsersService} from "../../../../../core/services/http/users.service";
 
 @Component({
   selector: 'page-admin-create-user',

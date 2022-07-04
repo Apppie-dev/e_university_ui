@@ -1,0 +1,150 @@
+@import '~src/styles/variables';
+
+.file {
+  cursor: pointer;
+  background: #FFFFFF;
+  border: 0.05rem solid #ECECEC;
+  box-shadow: 0 0.2rem 0.6rem rgba(0, 0, 0, 0.05);
+  border-radius: 0.83rem;
+  width: 13rem;
+  height: 15rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+
+  .file-hover-layout {
+    border-radius: inherit;
+    transition: all .2s linear;
+    width: inherit;
+    height: inherit;
+    opacity: 0;
+    z-index: -1;
+    position: absolute;
+    background: rgba(2, 53, 129, 0.81);
+    border: 1px solid #ECECEC;
+    box-shadow: 0 0.2rem 0.65rem rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1.46rem 1.2rem 1.46rem 1.46rem;
+
+    .toggle-menu-icon {
+      margin-left: auto;
+      width: 1rem;
+      display: flex;
+      justify-content: center;
+
+      svg {
+        height: 0.94rem;
+        width: 0.2rem;
+      }
+    }
+
+    .download-icon {
+      width: 2.9rem;
+      height: 2.7rem;
+      margin: 0 auto;
+    }
+
+    .size {
+      margin-right: auto;
+      font-family: $theme-font-MulishBold;
+      font-style: normal;
+      font-weight: 700;
+      font-size: 0.83rem;
+      line-height: 150%;
+      color: #FFFFFF;
+    }
+  }
+
+  &-icon {
+    height: 10.6rem;
+    width: 100%;
+    padding: 2.3rem 3.75rem;
+  }
+
+  &-footer {
+    padding: 0.6rem 1.1rem;
+    border-top: 0.05rem solid #ECECEC;
+
+    .name {
+      font-family: $theme-font-MulishBold;
+      font-style: normal;
+      font-weight: 700;
+      font-size: 0.83rem;
+      line-height: 150%;
+      color: #42505C;
+    }
+
+    .date {
+      font-family: $theme-font-MulishMedium;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 0.83rem;
+      line-height: 150%;
+      color: #8692A6;
+      margin-top: 0.3rem;
+    }
+  }
+
+  &:hover {
+
+    .file-hover-layout {
+      transition: all .2s linear;
+      z-index: 25;
+      opacity: 1;
+    }
+  }
+}
+
+
+.menu {
+  position: relative;
+
+  .menu-area {
+    cursor: pointer;
+  }
+
+  &-active {
+    z-index: 2;
+  }
+
+  .dropdown {
+    position: absolute;
+    top: 1rem;
+    right: 3rem;
+
+    .dropdown-content {
+      padding: 4px 0;
+    }
+
+    .dropdown-menu {
+      width: 235px;
+      min-width: auto;
+      box-shadow: 0px 4px 13px rgba(0, 0, 0, 0.05);
+      border-radius: 8px;
+    }
+
+    .dropdown-item {
+      padding: 0.625rem;
+      cursor: pointer;
+      font-family: $theme-font-MulishMedium;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 0.83rem;
+      line-height: 1.145rem;
+      color: #42505C;
+      transition: .2s linear;
+
+      &:hover {
+        transition: .2s linear;
+        background-color: #EFF6FF;
+      }
+
+      &:not(:last-of-type) {
+        border-bottom: 1px solid #ECECEC;
+      }
+    }
+  }
+}

@@ -12,3 +12,4 @@ export { OrdersService } from './http/orders.service';
 export { UsersService } from './http/users.service'
 export { RequestService } from './http/request.service';
 export { HostelService } from './http/hostel.service';
+export { FileService } from './http/file.service';

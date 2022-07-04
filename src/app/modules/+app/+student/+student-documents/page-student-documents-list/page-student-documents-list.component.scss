@@ -1,0 +1,10 @@
+.list {
+  display: flex;
+  flex-wrap: wrap;
+
+  ::ng-deep {
+    element-file {
+      margin: 0 0.83rem 0.83rem 0;
+    }
+  }
+}

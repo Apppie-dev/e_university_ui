@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {FileModel} from "@app/models";
 
 @Component({
   selector: 'page-student-documents-list',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./page-student-documents-list.component.scss']
 })
 export class PageStudentDocumentsListComponent implements OnInit {
+
+  file: FileModel = new FileModel();
 
   constructor() { }
 

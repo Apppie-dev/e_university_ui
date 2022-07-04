@@ -5,7 +5,7 @@ import {UiNotifierService} from "@app/services";
 @Component({
   selector: 'element-table-faculties',
   templateUrl: './element-table-faculties.component.html',
-  styleUrls: ['./element-table-faculties.component.css']
+  styleUrls: ['./element-table-faculties.component.scss']
 })
 export class ElementTableFacultiesComponent {
 

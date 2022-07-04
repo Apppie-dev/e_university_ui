@@ -7,7 +7,7 @@ import {HttpErrorResponse} from "@angular/common/http";
 import {SETTINGS_APP} from "@app/constants";
 import {Subject} from "rxjs";
 import {takeUntil} from "rxjs/operators";
-import {UsersService} from "../../../core/services/http/users.service";
+import {UsersService} from "@app/services";
 
 @Component({
   selector: 'page-check-exist-user',
