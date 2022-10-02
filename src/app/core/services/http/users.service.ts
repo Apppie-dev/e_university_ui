@@ -1,4 +1,4 @@
-import {environment} from "@app/environment/environment";
+import {environment} from "../../../../environments/environment";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import { Injectable } from '@angular/core';
 import {Observable} from "rxjs";

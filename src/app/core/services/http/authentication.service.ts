@@ -4,7 +4,7 @@ import {LocalStorageService} from "../common/local-storage.service";
 import {SETTINGS_APP} from "@app/constants";
 import {BehaviorSubject, Observable, of, Subject} from "rxjs";
 import {UserModel} from "@app/models";
-import {environment} from "@app/environment/environment";
+import {environment} from "../../../../environments/environment";
 import {filter, map, takeUntil} from "rxjs/operators";
 import {UsersService} from "./users.service";
 import {Router} from "@angular/router";

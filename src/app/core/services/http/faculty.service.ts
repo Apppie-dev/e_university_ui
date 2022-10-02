@@ -3,7 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {SETTINGS_APP} from "@app/constants";
 import {BehaviorSubject, Observable, Subject} from "rxjs";
 import {FacultyModel, UserModel} from "@app/models";
-import {environment} from "@app/environment/environment";
+import {environment} from "../../../../environments/environment";
 
 
 @Injectable({

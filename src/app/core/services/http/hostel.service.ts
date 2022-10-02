@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import { HostelModel} from "@app/models";
-import {environment} from "@app/environment/environment";
+import {environment} from "../../../../environments/environment";
 
 
 @Injectable({

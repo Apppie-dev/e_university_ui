@@ -7,7 +7,7 @@ import { Injectable } from '@angular/core';
 })
 export class ErrorLoggerService {
 
-  // private backendUrl = environment.backendUrl;
+  // private backendUrl = environment.ts.backendUrl;
 
   constructor(
     // private http: HttpClient
@@ -18,8 +18,8 @@ export class ErrorLoggerService {
 
     console.error('Error', logType, message, additional);
 
-    // if (!environment.production) {
-    //   // local environment : not logging, but console notification
+    // if (!environment.ts.production) {
+    //   // local environment.ts : not logging, but console notification
     //   console.error('Error', logType, message, additional);
     //   return;
     // }
