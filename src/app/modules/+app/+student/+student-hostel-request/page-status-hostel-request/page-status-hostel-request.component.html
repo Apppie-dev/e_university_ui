@@ -10,7 +10,7 @@
     </div>
   </div>
 
-  <ng-template [ngIf]="requestStatus === REQUEST_STATUSES.UnderConsideration">
+  <ng-template [ngIf]="requestStatus === REQUEST_STATUSES.InProgress">
     <div class="status-info">
       <div class="status-info-row">
         <div class="status-info-left-col">
@@ -28,8 +28,8 @@
     </div>
   </ng-template>
 
-  <ng-template [ngIf]="requestStatus === REQUEST_STATUSES.Approved">
-    <div class="status-info">
+  <ng-template [ngIf]="requestStatus === REQUEST_STATUSES.Approved && showHostelInfo === false">
+    <div class="status-info" >
       <div class="status-info-row">
         <div class="status-info-left-col">
           <div class="status-info-col-header">Cтатус</div>
@@ -38,9 +38,9 @@
           <div class="status-info-col-state green">Вас рекомендовано до поселення в гуртожиток "Назва гуртожитку"
           </div>
           <div class="status-info-col-text">
-            <b>Адреса гуртожитку:</b> м. Харків, вул. Цілиноградська, б. 40
-            <b>Ваша кімната:</b> 317
-            <b>Кiлькiсть ліжко-місць:</b> 1
+            <b>Адреса гуртожитку:</b> м. Харків, вул. Цілиноградська, б. 40<br>
+            <b>Ваша кімната:</b> 317<br>
+            <b>Кiлькiсть ліжко-місць:</b> 1<br>
           </div>
         </div>
       </div>
@@ -69,7 +69,7 @@
             <b>Тільки після сплати проживання в гуртожитку, за Вами буде закрiплено мiсце і Ви зможете
               заселитися.</b><br><br>
             <div class="control">
-              <button class="button submit-button">Далі</button>
+              <button class="button submit-button" (click)="showHostelInfo = !showHostelInfo">Далі</button>
             </div>
           </div>
         </div>
@@ -79,16 +79,17 @@
 
 
   <ng-template [ngIf]="requestStatus === REQUEST_STATUSES.Rejected">
-    <div class="notifier__notification--error status-error">
-      <span>
-      <svg width="35" height="35" fill="#ff0000" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path
-          d="M12 2.25c-5.376 0-9.75 4.374-9.75 9.75s4.374 9.75 9.75 9.75 9.75-4.374 9.75-9.75S17.376 2.25 12 2.25Zm3.53 12.22a.75.75 0 1 1-1.06 1.06L12 13.06l-2.47 2.47a.75.75 0 0 1-1.06-1.06L10.94 12 8.47 9.53a.75.75 0 0 1 1.06-1.06L12 10.94l2.47-2.47a.75.75 0 0 1 1.06 1.06L13.06 12l2.47 2.47Z"></path>
-      </svg></span>
-<div>
-        Ви вже створили заяву на посилання
-</div>
-    </div>
+<!--    ERROR NOTIFICATION-->
+<!--    <div class="notifier__notification&#45;&#45;error status-error">-->
+<!--      <span>-->
+<!--      <svg width="35" height="35" fill="#ff0000" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">-->
+<!--        <path-->
+<!--          d="M12 2.25c-5.376 0-9.75 4.374-9.75 9.75s4.374 9.75 9.75 9.75 9.75-4.374 9.75-9.75S17.376 2.25 12 2.25Zm3.53 12.22a.75.75 0 1 1-1.06 1.06L12 13.06l-2.47 2.47a.75.75 0 0 1-1.06-1.06L10.94 12 8.47 9.53a.75.75 0 0 1 1.06-1.06L12 10.94l2.47-2.47a.75.75 0 0 1 1.06 1.06L13.06 12l2.47 2.47Z"></path>-->
+<!--      </svg></span>-->
+<!--<div>-->
+<!--        Ви вже створили заяву на посилання-->
+<!--</div>-->
+<!--    </div>-->
     <div class="status-info">
       <div class="status-info-row">
         <div class="status-info-left-col">
@@ -118,7 +119,7 @@
   </ng-template>
 
 
-  <ng-template [ngIf]="requestStatus === REQUEST_STATUSES.Canceled">
+  <ng-template [ngIf]="requestStatus === REQUEST_STATUSES.Approved && showHostelInfo === true">
     <div class="status-info">
       <div class="status-info-row">
         <div class="status-info-left-col">

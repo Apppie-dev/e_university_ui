@@ -38,6 +38,6 @@ export class HostelRequestModel {
 export enum RequestStatusIDModel {
   'Approved'= 1,
   'Rejected',
-  'UnderConsideration',
+  'InProgress',
   'Canceled',
 }

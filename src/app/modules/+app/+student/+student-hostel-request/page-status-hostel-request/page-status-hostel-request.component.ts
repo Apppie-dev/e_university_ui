@@ -12,6 +12,7 @@ export class PageStatusHostelRequestComponent implements OnInit {
 
   requestStatus = RequestStatusIDModel.Approved;
 
+  showHostelInfo:boolean = false;
 
   ngOnInit(): void {
 
