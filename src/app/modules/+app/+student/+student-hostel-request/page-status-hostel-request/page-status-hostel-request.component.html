@@ -19,9 +19,9 @@
         <div class="status-info-right-col">
           <div class="status-info-col-state green">Ваша заява прийнята до розгляду</div>
           <div class="status-info-col-text">
-            Адреса гуртожитку: м. Харків, вул. Цілиноградська, б. 40
-            Ваша кімната: 317
-            Кiлькiсть ліжко-місць: 1
+            Після розгляду заяви, ви отримаєте реквізити для сплати з <br>
+            проживання в гуртожитку та всю необхідну інформацію щодо <br>
+            поселення.
           </div>
         </div>
       </div>
@@ -56,6 +56,101 @@
             <b>Вартість проживання у гуртожитку</b> складає 800 грн/місяць <br>
             Потрібно сплатити за 4 місяців проживання <br>
             <b>Сума за проживання складає:</b> 800 грн/мес * 4 мес * 1 ліжко-місце = 3200 грн <br>
+          </div>
+          <div>
+            <div class="status-info-col-state ">Реквізити для сплати</div>
+          </div>
+          <div class="status-info-col-text">
+            <b>Рахунок:</b> UA 826482364382748327483 <br>
+            ХНЕУ iм. Семена Кузнеця <br>
+            <b>ЄДРПОУ 753485385</b> <br>
+            <b>Призначення платежу:</b> "За проживання в гуртожитку "Назва гуртожитку" ПІБ" <br><br>
+
+            <b>Тільки після сплати проживання в гуртожитку, за Вами буде закрiплено мiсце і Ви зможете
+              заселитися.</b><br><br>
+            <div class="control">
+              <button class="button submit-button">Далі</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+
+
+  <ng-template [ngIf]="requestStatus === REQUEST_STATUSES.Rejected">
+    <div class="notifier__notification--error status-error">
+      <span>
+      <svg width="35" height="35" fill="#ff0000" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M12 2.25c-5.376 0-9.75 4.374-9.75 9.75s4.374 9.75 9.75 9.75 9.75-4.374 9.75-9.75S17.376 2.25 12 2.25Zm3.53 12.22a.75.75 0 1 1-1.06 1.06L12 13.06l-2.47 2.47a.75.75 0 0 1-1.06-1.06L10.94 12 8.47 9.53a.75.75 0 0 1 1.06-1.06L12 10.94l2.47-2.47a.75.75 0 0 1 1.06 1.06L13.06 12l2.47 2.47Z"></path>
+      </svg></span>
+<div>
+        Ви вже створили заяву на посилання
+</div>
+    </div>
+    <div class="status-info">
+      <div class="status-info-row">
+        <div class="status-info-left-col">
+          <div class="status-info-col-header">Cтатус</div>
+        </div>
+        <div class="status-info-right-col">
+          <div class="status-info-col-state red">Заява вже існує
+          </div>
+          <div class="status-info-col-text">
+            Для того щоб зробити нову заяву на поселення в гуртожиток <br>
+            необхідно скасувати вже існуючу.
+          </div>
+        </div>
+      </div>
+      <div class="status-info-row">
+        <div class="status-info-left-col">
+          <div class="status-info-col-header">Зміна</div>
+        </div>
+        <div class="status-info-right-col">
+          <div class="status-info-col-text">
+            <b>Перейдіть за посилання <a> https://blabla/moi-zayvi/1234 </a> для того щоб скасувати <br>
+              існуючу заяву на поселення</b>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+
+
+  <ng-template [ngIf]="requestStatus === REQUEST_STATUSES.Canceled">
+    <div class="status-info">
+      <div class="status-info-row">
+        <div class="status-info-left-col">
+          <div class="status-info-col-header">Інформація<br>
+            про поселення
+          </div>
+        </div>
+        <div class="status-info-right-col">
+          <div class="status-info-col-state">При поселеннi потрiбно мати при собі:
+          </div>
+          <div class="status-info-col-text">
+            1) паспорт громадянина України (оригінал).<br>
+            2) 6 фотокарток 3х4.<br>
+            3) результат флюорографії з терміном видач) до одного року(оригінал).<br>
+            4) квитанція про сплату за проживання не менш ніж за 4 місяці (копія).<br>
+
+          </div>
+        </div>
+      </div>
+      <div class="status-info-row">
+        <div class="status-info-left-col">
+          <div class="status-info-col-header">Контактна<br>
+            інформація
+          </div>
+        </div>
+        <div class="status-info-right-col">
+          <div class="status-info-col-text">
+            <b>1) Адреса гуртожитку:</b> м. Харків, вул. Цілиноградська, б. 40<br>
+            <b>2) Соц. мережі: </b> <a>https://www.google.com.ua/?hl=ru</a><br>
+            <b>3) Комендант гуртожитку:</b> Петренко Петр Петрович: 3805011.<br>
+            <b>4) Заступник декана:</b> Іваненко Іван Іванович: 300501111112<br><br>
+            <b>Для уточнення дати поселення зв'яжіться за вказанними вище контактами.</b>
           </div>
         </div>
       </div>

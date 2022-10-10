@@ -11,26 +11,30 @@
 
     .status-info-left-col {
 
+      width: 12rem;
+
       .status-info-col-header {
         font-family: $theme-font-MulishMedium;
         font-style: normal;
         font-weight: 500;
-        font-size: 1rem;
+        font-size: 1.3rem;
         line-height: 120%;
         text-transform: uppercase;
         color: #8692A6;
+
       }
     }
     .status-info-right-col {
       width: 40rem;
-      margin-left: 3.3rem;
+      margin-left: 2rem;
 
       .status-info-col-state {
-        width: 23rem;
+        width: 30rem;
+        margin-bottom: 1.25rem;
         font-family: $theme-font-MulishBold;
         font-style: normal;
         font-weight: 700;
-        font-size: 0.9rem;
+        font-size: 1rem;
         line-height: 1.1rem;
 
         &.green {
@@ -43,8 +47,36 @@
       }
 
       .status-info-col-text {
-        margin-top: 1.25rem;
+        font-family: $theme-font-MulishMedium;
+
+        margin-bottom: 2rem;
       }
     }
   }
+}
+
+.control {
+  button.submit-button {
+    width: 9rem;
+    font-size: 0.9rem;
+  }
+}
+
+
+.status-error {
+  font-family: $theme-font-MulishMedium;
+  font-size: 0.9rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+
+  width: 23rem;
+  height: 3rem;
+  border-radius: 0.3rem;
+  padding: 1rem 1rem;
+
+  position: absolute;
+  top: 3rem;
+  right: 2rem;
 }
