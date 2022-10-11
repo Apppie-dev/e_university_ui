@@ -7,7 +7,8 @@ import {AbstractControl} from "@angular/forms";
   templateUrl: './form-field-errors.component.html',
   styleUrls: ['./form-field-errors.component.scss']
 })
-export class FormFieldErrorsComponent{
+export class FormFieldErrorsComponent {
   @Input() formField: AbstractControl;
+  @Input() validValue: number | string
 
 }

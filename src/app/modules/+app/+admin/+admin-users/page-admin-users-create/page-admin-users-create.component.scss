@@ -1,0 +1,104 @@
+@use '~src/styles/variables' as *;
+
+$activeSelectColor: #F1F7FF;
+$elementTextColor: rgba(#363636, 0.3);
+$elementSelectedTextColor: #42505C;
+
+$fontSize: 0.7291rem;
+$lineHeight: 0.9374rem;
+$textIndent: 1.25rem;
+
+$height: 3.3333rem;
+$bd-radii: 0.625rem;
+
+.subtitle {
+  font-family: $theme-font-MulishMedium;
+  opacity: 0.8;
+}
+
+.control {
+  button.submit-button {
+    width: 10rem;
+  }
+}
+
+.field {
+  margin-bottom: 1.5rem;
+}
+
+form-field-errors {
+  position: absolute;
+  bottom: -1rem;
+  left: 0;
+}
+
+:host ::ng-deep .element-dropdown {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  height: $height;
+
+  border-radius: $bd-radii;
+
+  .p-placeholder, .p-dropdown-label {
+    font-family: $theme-font-MulishMedium;
+    font-size: $fontSize;
+    line-height: $lineHeight;
+    text-indent: $textIndent;
+    color: $elementTextColor;
+
+    padding: calc(0.5em - 1px) calc(0.75em - 1px);
+
+    .element-dropdown-item {
+      color: $elementSelectedTextColor;
+    }
+  }
+
+  .p-dropdown-panel {
+    border-radius: $bd-radii;
+    width: 100%;
+
+    .p-dropdown-header {
+      background: none;
+      padding: 0.25rem;
+      border: none;
+    }
+  }
+
+  .p-dropdown-items {
+    padding: 0 0.25rem;
+  }
+
+  .p-dropdown-item {
+    border-radius: $bd-radii;
+    font-size: $fontSize;
+    display: flex;
+    align-items: center;
+    height: $height;
+
+    &:not(.p-highlight):hover {
+      background-color: $activeSelectColor !important;
+    }
+  }
+
+  &.p-focus, & .p-dropdown-filter {
+    border-color: $systemBlue;
+    box-shadow: 0 0 0 0.125em rgb(50 115 220 / 25%);
+  }
+
+  /* Works on Chrome, Edge, and Safari */
+  .p-dropdown-items-wrapper::-webkit-scrollbar {
+    width: 5px;
+    height: 38px;
+  }
+
+  .p-dropdown-items-wrapper::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .p-dropdown-items-wrapper::-webkit-scrollbar-thumb {
+    background-color: $systemBlue;
+    border-radius: 20px;
+  }
+}

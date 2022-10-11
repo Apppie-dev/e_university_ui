@@ -10,6 +10,10 @@ const moduleRoutes: Routes = [
     path: 'hostels',
     loadChildren: () => import('./+admin-hostels/admin-hostels.module').then(m => m.AdminHostelsModule)
   },
+  {
+    path: 'users',
+    loadChildren: () => import('./+admin-users/admin-users.module').then(m => m.AdminUsersModule)
+  },
 ];
 
 @NgModule({

@@ -8,6 +8,7 @@ form {
   .field {
     margin-bottom: 0.8333rem;
     position: relative;
+
     label {
       font-family: $theme-font-MulishMedium;
       font-style: normal;
@@ -27,7 +28,8 @@ form {
       font-weight: 500;
       font-size: 0.7291rem;
       line-height: 0.9374rem;
-      color: #8692A6;
+      //color: #8692A6;
+      color: #42505C;
       border-radius: 0.625rem;
       text-indent: 1.25rem;
 
@@ -35,6 +37,7 @@ form {
         border-color: #1565D8;
       }
     }
+
     textarea {
       font-family: $theme-font-MulishMedium;
       font-style: normal;
@@ -88,6 +91,7 @@ form {
     top: 0.92rem !important;
     left: 0.9rem !important;
     height: unset !important;
+
     svg {
       width: 1.5rem;
       height: 1.5rem;

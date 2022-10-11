@@ -8,4 +8,13 @@
     <p class="help is-danger">Поле не повинно бути порожнім</p>
   </ng-container>
 
+  <ng-container *ngIf="formField.errors?.minlength">
+    <p class="help is-danger">Мінімальна
+      довжина {{validValue}} {{validValue === 1 ? 'символ' : validValue < 5 ? 'символи' : 'символів'}}</p>
+  </ng-container>
+
+  <ng-container *ngIf="formField.errors?.pattern">
+    <p class="help is-danger">Введенні невалідні данні</p>
+  </ng-container>
+
 </ng-container>

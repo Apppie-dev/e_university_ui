@@ -39,3 +39,7 @@ export class UserRoleModel {
   }
 }
 
+export enum UserGenderModel {
+  'male' = 'm',
+  'female' = 'f'
+}

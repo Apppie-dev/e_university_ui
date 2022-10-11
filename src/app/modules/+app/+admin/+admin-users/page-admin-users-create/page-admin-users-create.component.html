@@ -1,0 +1,202 @@
+<div *ngIf="!dataError && !dataLoading" class="section is-main-section">
+
+  <div class="level content-title mb-0">
+    <div class="level-left fullwidth-block">
+      <div class="level-item section-layout-header">
+        <div class="title mb-0">
+          <span>Перелік студентів</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="level fullwidth-block">
+    <div class="level-item is-justify-content-space-between is-align-items-flex-end">
+      <div class="subtitle is-6 is-uppercase">
+        <span>Додати нового студента</span>
+      </div>
+      <div class="control">
+        <button (click)="onSubmit()" [disabled]="formUserCreate.invalid || dataLoading"
+                class="button is-medium is-fullwidth submit-button"
+                tabindex="9" type="button">Створити
+        </button>
+      </div>
+    </div>
+  </div>
+  <hr>
+
+  <form [formGroup]="formUserCreate" class="columns">
+    <div class="column is-one-third">
+      <div class="field-wrapper">
+
+        <!-- TODO: refactor input to form-field component -->
+        <div class="field">
+          <label class="label" for="lastName">Прізвище</label>
+          <div class="control">
+            <input [ngClass]="{
+                'is-danger': formUserCreate.touched && formUserCreate.controls.lastName.touched && formUserCreate.controls.lastName.invalid,
+                'is-success': formUserCreate.touched && formUserCreate.controls.lastName.touched && !formUserCreate.controls.lastName.invalid
+              }" autocomplete="off" class="input" formControlName="lastName" id="lastName" name="lastName"
+                   placeholder="Введіть прізвище студента" tabindex="1" type="text">
+          </div>
+          <form-field-errors [formField]="formUserCreate.controls.lastName" [validValue]="3"></form-field-errors>
+        </div>
+
+        <div class="field">
+          <label class="label" for="firstName">Ім'я</label>
+          <div class="control">
+            <input [ngClass]="{
+              'is-danger': formUserCreate.touched && formUserCreate.controls.firstName.touched && formUserCreate.controls.firstName.invalid,
+              'is-success': formUserCreate.touched && formUserCreate.controls.firstName.touched && !formUserCreate.controls.firstName.invalid
+            }" autocomplete="off" class="input" formControlName="firstName"
+                   id="firstName" name="firstName" placeholder="Введіть ім'я студента" tabindex="3"
+                   type="text">
+          </div>
+          <form-field-errors [formField]="formUserCreate.controls.firstName" [validValue]="3"></form-field-errors>
+        </div>
+
+        <!-- TODO: refactor dropdown to element-dropdown component -->
+        <div class="field">
+          <div class="control">
+            <label class="label">Спеціальність</label>
+            <p-dropdown [(ngModel)]="selectedSpeciality" [filter]="true" [options]="specialities"
+                        emptyFilterMessage="Упс, нічого не знайдено"
+                        emptyMessage="Сталася помилка, перезавантажте сторінку" filterBy="speciality_info.full_name"
+                        formControlName="speciality" optionLabel="speciality_info.full_name"
+                        placeholder="Виберіть спеціальність" styleClass="element-dropdown" tabindex="5">
+              <ng-template pTemplate="selectedItem">
+                <div *ngIf="selectedSpeciality" class="element-dropdown-item">
+                  <div>{{selectedSpeciality.speciality_info.full_name}}</div>
+                </div>
+              </ng-template>
+              <ng-template let-speciality pTemplate="item">
+                <div class="element-dropdown-item">
+                  <div>{{speciality.speciality_info.full_name}}</div>
+                </div>
+              </ng-template>
+            </p-dropdown>
+            <form-field-errors [formField]="formUserCreate.controls.speciality"></form-field-errors>
+          </div>
+        </div>
+
+        <div class="field">
+          <div class="control">
+            <label class="label">Курс</label>
+            <p-dropdown [(ngModel)]="selectedCourse" [options]="courses" emptyFilterMessage="Упс, нічого не знайдено"
+                        emptyMessage="Сталася помилка, перезавантажте сторінку"
+                        formControlName="course" optionLabel="value"
+                        placeholder="Виберіть курс" styleClass="element-dropdown" tabindex="7">
+              <ng-template pTemplate="selectedItem">
+                <div *ngIf="selectedCourse" class="element-dropdown-item">
+                  <div>{{selectedCourse.value}}</div>
+                </div>
+              </ng-template>
+              <ng-template let-course pTemplate="item">
+                <div class="element-dropdown-item">
+                  <div>{{course.value}}</div>
+                </div>
+              </ng-template>
+            </p-dropdown>
+            <form-field-errors [formField]="formUserCreate.controls.course"></form-field-errors>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="column is-one-third">
+      <div class="field-wrapper">
+
+        <div class="field">
+          <label class="label" for="middleName">По-батькові</label>
+          <div class="control">
+            <input [ngClass]="{
+                'is-danger': formUserCreate.touched && formUserCreate.controls.middleName.touched && formUserCreate.controls.middleName.invalid,
+                'is-success': formUserCreate.touched && formUserCreate.controls.middleName.touched && !formUserCreate.controls.middleName.invalid
+               }" autocomplete="off" class="input" formControlName="middleName"
+                   id="middleName" name="middleName" placeholder="Введіть по-батькові студента" tabindex="2"
+                   type="text">
+          </div>
+          <form-field-errors [formField]="formUserCreate.controls.middleName" [validValue]="3"></form-field-errors>
+        </div>
+
+        <div class="field phone-field">
+          <label class="label" for="phone">Номер телефону</label>
+          <div class="control has-icons-left">
+            <input [ngClass]="{
+                'is-danger': formUserCreate.touched && formUserCreate.controls.phone.touched && formUserCreate.controls.phone.invalid,
+                'is-success': formUserCreate.touched && formUserCreate.controls.phone.touched && !formUserCreate.controls.phone.invalid
+              }" autocomplete="off" class="input" formControlName="phone" id="phone" name="phone"
+                   placeholder="99 345 21 12" tabindex="4" type="number">
+
+            <span class="icon is-left phone-input-icon">
+                <svg fill="none" viewBox="0 0 25 18" xmlns="http://www.w3.org/2000/svg"
+                     xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <rect fill="url(#pattern0)" height="18" width="24" x="0.5"/>
+                    <defs>
+                    <pattern height="1" id="pattern0" patternContentUnits="objectBoundingBox" width="1">
+                    <use transform="translate(-0.0625) scale(0.00125 0.00166667)" xlink:href="#image0_1_403"/>
+                    </pattern>
+                    <image height="600" id="image0_1_403" width="900"
+                           xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA4QAAAJYCAIAAAC1p7+MAAALS0lEQVR4nO3YQQ2AMAAEQYoJEnxWZwVUCF9k7KMzCu65ufHOdQEAQOGuBwAAcC4xCgBARowCAJARowAAZMQoAAAZMQoAQEaMAgCQEaMAAGTEKAAAGTEKAEBGjAIAkBGjAABkxCgAABkxCgBARowCAJARowAAZMQoAAAZMQoAQEaMAgCQEaMAAGTEKAAAGTEKAEBGjAIAkBGjAABkxCgAABkxCgBARowCAJARowAAZMQoAAAZMQoAQEaMAgCQEaMAAGTEKAAAGTEKAEBGjAIAkBGjAABkxCgAABkxCgBARowCAJARowAAZMQoAAAZMQoAQEaMAgCQEaMAAGTEKAAAGTEKAEBGjAIAkBGjAABkxCgAABkxCgBARowCAJARowAAZMQoAAAZMQoAQEaMAgCQEaMAAGTEKAAAGTEKAEBGjAIAkBGjAABkxCgAABkxCgBARowCAJARowAAZMQoAAAZMQoAQEaMAgCQEaMAAGTEKAAAGTEKAEBGjAIAkBGjAABkxCgAABkxCgBARowCAJARowAAZMQoAAAZMQoAQEaMAgCQEaMAAGTEKAAAGTEKAEBGjAIAkBGjAABkxCgAABkxCgBARowCAJARowAAZMQoAAAZMQoAQEaMAgCQEaMAAGTEKAAAGTEKAEBGjAIAkBGjAABkxCgAABkxCgBARowCAJARowAAZMQoAAAZMQoAQEaMAgCQEaMAAGTEKAAAGTEKAEBGjAIAkBGjAABkxCgAABkxCgBARowCAJARowAAZMQoAAAZMQoAQEaMAgCQEaMAAGTEKAAAGTEKAEBGjAIAkBGjAABkxCgAABkxCgBARowCAJARowAAZMQoAAAZMQoAQEaMAgCQEaMAAGTEKAAAGTEKAEBGjAIAkBGjAABkxCgAABkxCgBARowCAJARowAAZMQoAAAZMQoAQEaMAgCQEaMAAGTEKAAAGTEKAEBGjAIAkBGjAABkxCgAABkxCgBARowCAJARowAAZMQoAAAZMQoAQEaMAgCQEaMAAGTEKAAAGTEKAEBGjAIAkBGjAABkxCgAABkxCgBARowCAJARowAAZMQoAAAZMQoAQEaMAgCQEaMAAGTEKAAAGTEKAEBGjAIAkBGjAABkxCgAABkxCgBARowCAJARowAAZMQoAAAZMQoAQEaMAgCQEaMAAGTEKAAAGTEKAEBGjAIAkBGjAABkxCgAABkxCgBARowCAJARowAAZMQoAAAZMQoAQEaMAgCQEaMAAGTEKAAAGTEKAEBGjAIAkBGjAABkxCgAABkxCgBARowCAJARowAAZMQoAAAZMQoAQEaMAgCQEaMAAGTEKAAAGTEKAEBGjAIAkBGjAABkxCgAABkxCgBARowCAJARowAAZMQoAAAZMQoAQEaMAgCQEaMAAGTEKAAAGTEKAEBGjAIAkBGjAABkxCgAABkxCgBARowCAJARowAAZMQoAAAZMQoAQEaMAgCQEaMAAGTEKAAAGTEKAEBGjAIAkBGjAABkxCgAABkxCgBARowCAJARowAAZMQoAAAZMQoAQEaMAgCQEaMAAGTEKAAAGTEKAEBGjAIAkBGjAABkxCgAABkxCgBARowCAJARowAAZMQoAAAZMQoAQEaMAgCQEaMAAGTEKAAAGTEKAEBGjAIAkBGjAABkxCgAABkxCgBARowCAJARowAAZMQoAAAZMQoAQEaMAgCQEaMAAGTEKAAAGTEKAEBGjAIAkBGjAABkxCgAABkxCgBARowCAJARowAAZMQoAAAZMQoAQEaMAgCQEaMAAGTEKAAAGTEKAEBGjAIAkBGjAABkxCgAABkxCgBARowCAJARowAAZMQoAAAZMQoAQEaMAgCQEaMAAGTEKAAAGTEKAEBGjAIAkBGjAABkxCgAABkxCgBARowCAJARowAAZMQoAAAZMQoAQEaMAgCQEaMAAGTEKAAAGTEKAEBGjAIAkBnffuoNAAAcyjMKAEBGjAIAkBGjAABkxCgAABkxCgBARowCAJARowAAZMQoAAAZMQoAQEaMAgCQEaMAAGTEKAAAGTEKAEBGjAIAkBGjAABkxCgAABkxCgBARowCAJARowAAZMQoAAAZMQoAQEaMAgCQEaMAAGTEKAAAGTEKAEBGjAIAkBGjAABkxCgAABkxCgBARowCAJARowAAZMQoAAAZMQoAQEaMAgCQEaMAAGTEKAAAGTEKAEBGjAIAkBGjAABkxCgAABkxCgBARowCAJARowAAZMQoAAAZMQoAQEaMAgCQEaMAAGTEKAAAGTEKAEBGjAIAkBGjAABkxCgAABkxCgBARowCAJARowAAZMQoAAAZMQoAQEaMAgCQEaMAAGTEKAAAGTEKAEBGjAIAkBGjAABkxCgAABkxCgBARowCAJARowAAZMQoAAAZMQoAQEaMAgCQEaMAAGTEKAAAGTEKAEBGjAIAkBGjAABkxCgAABkxCgBARowCAJARowAAZMQoAAAZMQoAQEaMAgCQEaMAAGTEKAAAGTEKAEBGjAIAkBGjAABkxCgAABkxCgBARowCAJARowAAZMQoAAAZMQoAQEaMAgCQEaMAAGTEKAAAGTEKAEBGjAIAkBGjAABkxCgAABkxCgBARowCAJARowAAZMQoAAAZMQoAQEaMAgCQEaMAAGTEKAAAGTEKAEBGjAIAkBGjAABkxCgAABkxCgBARowCAJARowAAZMQoAAAZMQoAQEaMAgCQEaMAAGTEKAAAGTEKAEBGjAIAkBGjAABkxCgAABkxCgBARowCAJARowAAZMQoAAAZMQoAQEaMAgCQEaMAAGTEKAAAGTEKAEBGjAIAkBGjAABkxCgAABkxCgBARowCAJARowAAZMQoAAAZMQoAQEaMAgCQEaMAAGTEKAAAGTEKAEBGjAIAkBGjAABkxCgAABkxCgBARowCAJARowAAZMQoAAAZMQoAQEaMAgCQEaMAAGTEKAAAGTEKAEBGjAIAkBGjAABkxCgAABkxCgBARowCAJARowAAZMQoAAAZMQoAQEaMAgCQEaMAAGTEKAAAGTEKAEBGjAIAkBGjAABkxCgAABkxCgBARowCAJARowAAZMQoAAAZMQoAQEaMAgCQEaMAAGTEKAAAGTEKAEBGjAIAkBGjAABkxCgAABkxCgBARowCAJARowAAZMQoAAAZMQoAQEaMAgCQEaMAAGTEKAAAGTEKAEBGjAIAkBGjAABkxCgAABkxCgBARowCAJARowAAZMQoAAAZMQoAQEaMAgCQEaMAAGTEKAAAGTEKAEBGjAIAkBGjAABkxCgAABkxCgBARowCAJARowAAZMQoAAAZMQoAQEaMAgCQEaMAAGTEKAAAGTEKAEBGjAIAkBGjAABkxCgAABkxCgBARowCAJARowAAZMQoAAAZMQoAQEaMAgCQEaMAAGTEKAAAGTEKAEBGjAIAkBGjAABkxCgAABkxCgBARowCAJARowAAZMQoAAAZMQoAQEaMAgCQEaMAAGTEKAAAGTEKAEBGjAIAkBGjAABkxCgAABkxCgBARowCAJARowAAZMQoAAAZMQoAQEaMAgCQEaMAAGTEKAAAGTEKAEBGjAIAkBGjAABkxCgAABkxCgBARowCAJARowAAZMQoAAAZMQoAQEaMAgCQEaMAAGTEKAAAGTEKAEBGjAIAkBGjAABkxCgAABkxCgBARowCAJARowAAZMQoAAAZMQoAQEaMAgCQEaMAAGTEKAAAGTEKAEBGjAIAkBGjAABkxCgAABkxCgBARowCAJARowAAZMQoAAAZMQoAQEaMAgCQEaMAAGTEKAAAGTEKAEBGjAIAkBGjAABkxCgAABkxCgBARowCAJARowAAZMQoAAAZMQoAQEaMAgCQEaMAAGR+K6AH9kkchnsAAAAASUVORK5CYII="/>
+                    </defs>
+                  </svg>
+              <span>+380</span>
+            </span>
+          </div>
+          <form-field-errors [formField]="formUserCreate.controls.phone"></form-field-errors>
+        </div>
+
+        <div class="field">
+          <div class="control">
+            <label class="label">Факультет</label>
+            <p-dropdown [(ngModel)]="selectedFaculty" [filter]="true" [options]="faculties"
+                        emptyFilterMessage="Упс, нічого не знайдено"
+                        emptyMessage="Сталася помилка, перезавантажте сторінку"
+                        filterBy="name"
+                        formControlName="faculty" optionLabel="name"
+                        placeholder="Виберіть факультет"
+                        styleClass="element-dropdown" tabindex="6">
+              <ng-template pTemplate="selectedItem">
+                <div *ngIf="selectedFaculty" class="element-dropdown-item">
+                  <div>{{selectedFaculty.name}}</div>
+                </div>
+              </ng-template>
+              <ng-template let-faculty pTemplate="item">
+                <div class="element-dropdown-item">
+                  <div>{{faculty.name}}</div>
+                </div>
+              </ng-template>
+            </p-dropdown>
+            <form-field-errors [formField]="formUserCreate.controls.faculty"></form-field-errors>
+          </div>
+        </div>
+
+        <div class="field">
+          <div class="control">
+            <label class="label">Стать</label>
+            <p-dropdown [(ngModel)]="selectedGender" [options]="genders" emptyFilterMessage="Упс, нічого не знайдено"
+                        formControlName="gender"
+                        placeholder="Виберіть стать" styleClass="element-dropdown" tabindex="8">
+              <ng-template pTemplate="selectedItem">
+                <div *ngIf="selectedGender" class="element-dropdown-item">
+                  <div>{{(selectedGender === USER_GENDER_MODEL.male && 'Чоловіча') || (selectedGender === USER_GENDER_MODEL.female && 'Жіноча') }}</div>
+                </div>
+              </ng-template>
+              <ng-template let-gender pTemplate="item">
+                <div class="element-dropdown-item">
+                  <div>{{(gender === USER_GENDER_MODEL.male && 'Чоловіча') || (gender === USER_GENDER_MODEL.female && 'Жіноча') }}</div>
+                </div>
+              </ng-template>
+            </p-dropdown>
+            <form-field-errors [formField]="formUserCreate.controls.gender"></form-field-errors>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </form>
+
+</div>
+
+<!-- TODO: create loader component -->
+<div *ngIf="dataLoading">Loading...</div>
